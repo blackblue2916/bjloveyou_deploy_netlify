@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../Styles/navbar.css";
 import loginIcon from "../Assets/images/login.png";
 import outIcon from "../Assets/images/out.png";
-import vipIcon from "../Assets/images/vip.png";
+// import vipIcon from "../Assets/images/vip.png";
 import superVipIcon from "../Assets/images/supervip.png";
 import { auth } from "../Helper/Chat_Auth_FirebaseConfig";
 import { Link } from "react-router-dom";

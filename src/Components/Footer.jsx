@@ -19,7 +19,11 @@ function Footer() {
   return (
     <div className="footer">
       <div className="socialMedia">
-        <YouTubeIcon />
+        <YouTubeIcon
+          onClick={() => {
+            toUrl("https://www.youtube.com/channel/UCGuiz0Z-bz6B8xomTtBfLmw");
+          }}
+        />
         <TelegramIcon />
         <TwitterIcon />
         <InstagramIcon />

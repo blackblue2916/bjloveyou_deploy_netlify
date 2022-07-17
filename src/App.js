@@ -66,7 +66,7 @@ function App() {
   // const [currentUserGold, setCurrentUserGold] = useState(0);
   const [isVip, setVip] = useState(false);
   const [isSuperVip, setSuperVip] = useState(false);
-  const [vipTime, setVipTime] = useState(null);
+  // const [vipTime, setVipTime] = useState(null);
 
   const [isCloseAdsModal, setCloseAdsModal] = useState(false);
 
@@ -169,7 +169,7 @@ function App() {
             superVip = doc.data().superVip;
             registerTime = doc.data().createdAt.seconds;
             setCurrentUserId(id);
-            setVipTime(registerTime);
+            // setVipTime(registerTime);
             localStorage.setItem("userId", doc.id);
             sessionStorage.setItem("createdAt", doc.data().createdAt.seconds);
             setVip(vip);
@@ -187,7 +187,7 @@ function App() {
                 superVip = doc.data().superVip;
                 registerTime = doc.data().createdAt.seconds;
                 setCurrentUserId(id);
-                setVipTime(registerTime);
+                // setVipTime(registerTime);
                 setVip(vip);
                 setSuperVip(superVip);
                 localStorage.setItem("userId", doc.id);
