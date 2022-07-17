@@ -1,0 +1,51 @@
+.asmr-container {
+  /* margin-top: 2rem; */
+  /* border:1px solid rgb(255, 0, 0); */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: rgb(61, 61, 61);
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* 超出部分隱藏*/
+}
+.preview-img {
+  width: 220px;
+  height: 150px;
+  margin: 0.2rem;
+  /* border:1px solid rgb(255, 0, 0); */
+  /* box-shadow: 0px 20px 50px rgba(0, 0, 0,0.5); */
+  /* overflow:hidden; */
+}
+.preview-img img {
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  transition: 0.2s linear;
+  cursor: pointer;
+}
+.preview-img:hover img {
+  /* border: 1px solid rgba(255, 152, 7); */
+  transform: scale(1.05);
+  /* box-shadow: 0px 20px 50px rgba(255, 202, 80, 0.5); */
+}
+.title-info {
+  color: rgb(158, 191, 173);
+  /* padding-left:0.5rem; */
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+}
+.bj-info {
+  color: rgb(201, 0, 188);
+  /* padding-left:0.5rem; */
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+}
+@media only screen and (max-width: 550px) {
+  .preview-img {
+    width: 260px;
+    height: 160px;
+  }
+  .preview-img img {
+    width: 260px;
+    height: 160px;
+  }
+}

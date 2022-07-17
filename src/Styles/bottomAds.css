@@ -1,0 +1,37 @@
+.bottom-ads-container {
+  position: fixed;
+  width: 50%;
+  height: 170px;
+  /* top: 0; */
+  /* left: 10%; */
+  right: 25%;
+  bottom: 10px;
+  /* transform: translate(-25%, -25%); */
+  /* padding:2rem; */
+  z-index: 1000;
+  border-radius: 10px;
+  cursor: pointer;
+  /* border: 1px solid #fff; */
+  background-image: url("../Assets/images/def_img_05.jpg");
+}
+.bottom-ads-container h5 {
+  background-color: rgba(71, 71, 71);
+  width: 36px;
+  height: 36px;
+  padding: 0.5rem auto;
+  margin-left: 98%;
+  margin-top: -2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+@media (max-width: 550px) {
+  .bottom-ads-container {
+    top: 100%;
+  }
+}

@@ -5,6 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:rgb(0, 0, 0);
+}
+
+p{
+  color: rgb(162, 162, 162);
+}
+h3{
+  color:rgba(255, 190, 92, 0.752);
+}
+h5{
+  color:rgba(255, 190, 92, 0.752);
 }
 
 code {

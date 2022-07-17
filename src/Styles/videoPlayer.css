@@ -1,0 +1,95 @@
+.video-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-inline: auto; */
+}
+.vip-video-title{
+    width: 100%; 
+    background-color: #000;
+    /* border: 1px solid #fff; */
+    padding:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.public-video-title{
+    width: 100%; 
+    background-color: #000;
+    /* border: 1px solid #fff; */
+    padding:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.public-video-iframe{
+    width: 100%; 
+}
+.vip-video-iframe{
+    width: 100%; 
+}
+.video-player{
+    position: relative;
+    width: 55%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.react-player{
+    margin-bottom: 2rem;
+}
+video{
+    /* border-radius: 20px; */
+    margin-bottom: 1rem;
+}
+/* 播放器 ui*/
+.video-controls{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    z-index: 100;  /* 视觉层次 */
+    opacity: 0;    /* 透明 */
+    transition: opacity 150ms ease-in-out;
+}
+.video-player:hover .video-controls,
+.video-player:focus-within .video-controls,
+.video-player .paused .video-controls
+{
+    opacity: 1;
+}
+
+.video-controls .controls{
+    display: flex;
+    gap: .5rem;
+    padding: .25rem;
+    align-items: center;
+}
+.video-controls .controls button{
+    background:none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: .7;
+    transition: opacity 150ms ease-in-out;
+}
+.video-controls .controls button:hover{
+    opacity: 1;
+}
+.video-player .paused .pause-icon{
+    display: none;
+}
+.video-player:not(.paused) .play-icon{
+    display: none;
+}

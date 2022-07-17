@@ -1,0 +1,17 @@
+.pagenotfound{
+    width: 100%; 
+    height: auto;
+    display: flex;
+    justify-content: center;   
+    align-items: center;
+    flex-direction: column;
+}
+.pagenotfound h1{
+    color: rgb(184, 184, 184);
+    font-size: 5rem;
+    margin-bottom: -1rem;  
+}
+.pagenotfound h3{
+    color: rgb(186, 186, 186);
+    margin-bottom: -1rem;  
+}

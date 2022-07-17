@@ -1,0 +1,114 @@
+.home {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
+  /* padding-top: 1rem;
+    padding-bottom: 1rem */
+}
+
+.homeVideos-box {
+  width: 60%;
+  /* margin-top: 1rem; */
+  /* margin-bottom: 1rem; */
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  /* grid-template-columns: repeat(4,1fr); */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  column-gap: 15px;
+  row-gap: 15px;
+  /* border: skyblue 1px solid; */
+  /* grid-auto-rows: minmax(100px, auto); */
+  /* gap: 15px; */
+  /* padding: 10px; */
+  /* height:auto; */
+  /* margin-top: 1rem; */
+  /* margin-bottom: 1rem; */
+  /* border:1px solid rgb(255, 0, 0); */
+  /* place-items: center; */
+}
+.item {
+  /* background-color: #12100d83; */
+  color: white;
+  /* margin-top: 1rem; */
+  /* margin-bottom: 1rem; */
+  /* opacity: 50%; */
+  /* border:skyblue 1px solid; */
+  /* padding: 20px; */
+  /* background-image: url(../Assets/images//zien/zien_01.png);
+    background-position: top 10px right 100px;
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+.home h3 {
+  color: #ff9735;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+}
+
+.loading-btn {
+  margin-top: 2rem;
+  width: 150px;
+  height: 36px;
+  border-radius: 15px;
+  background-color: #1a1a1a;
+  color: #43a4ce;
+  cursor: pointer;
+}
+.loading-btn:hover {
+  background-color: #1a1a1a;
+  color: #d4a764;
+}
+.home-top-ads:hover {
+  box-shadow: 0px 0px 30px rgba(211, 0, 253, 0.456);
+  /* border:6px solid rgba(211, 0, 253, 0.393); */
+}
+.pagination-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination {
+  list-style: none;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-left: 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  /* gap:5px; */
+}
+.pagination .page-num {
+  background-color: rgba(167, 104, 179, 0.456);
+  border-radius: 10px;
+  padding: 10px 18px;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.pagination .page-num:hover {
+  background-color: rgba(211, 0, 253);
+  transition: 0.3s ease-in-out;
+  color: #fff;
+}
+.pagination .active-page {
+  background-color: rgba(211, 0, 253);
+  color: #fff;
+}
+
+@media (max-width: 550px) {
+  .homeVideos-box {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
