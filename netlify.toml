@@ -1,7 +1,7 @@
 [build]
   base = "/"
   public = "public/"
-  command = "npm run build"
+  command = "CI= npm run build"
 functions = "my_functions/"
 [[redirects]]
   from ="/*"
