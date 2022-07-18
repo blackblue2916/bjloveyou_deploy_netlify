@@ -24,12 +24,16 @@ function Footer() {
             toUrl("https://www.youtube.com/channel/UCGuiz0Z-bz6B8xomTtBfLmw");
           }}
         />
-        <TelegramIcon />
+        <TelegramIcon
+          onClick={() => {
+            toUrl("https://t.me/lsp_hotdance");
+          }}
+        />
         <TwitterIcon />
         <InstagramIcon />
         <FacebookIcon />
       </div>
-      <p>&copy; 2022-2025 www.bjhouse.xyz</p>
+      <p>&copy; 2022-2025 www.bjloveyou.com</p>
     </div>
   );
 }
