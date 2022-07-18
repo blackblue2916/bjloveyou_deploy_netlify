@@ -1,7 +1,7 @@
 .bottom-ads-container {
   position: fixed;
   width: 50%;
-  height: 150px;
+  height: 200px;
   /* top: 0; */
   /* left: 10%; */
   right: 25%;
@@ -10,24 +10,33 @@
   /* padding:2rem; */
   z-index: 1000;
   /* border-radius: 10px; */
-  cursor: pointer;
   /* border: 1px solid #fff; */
-  background-image: url("../Assets/images/def_img_05.jpg");
+  /* background-image: url("../Assets/images/def_img_05.jpg"); */
 }
-.bottom-ads-container h5 {
-  background-color: rgba(71, 71, 71);
-  width: 36px;
-  height: 36px;
-  padding: 0.5rem auto;
-  margin-left: 98%;
-  margin-top: -2%;
+.bottom-ads-container img {
+  position: fixed;
+  width: 50%;
+  height: auto;
+  right: 25%;
+  cursor: pointer;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.bottom-ads-container p {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: -0%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-weight: 700;
-  font-size: 1rem;
-  border-radius: 50%;
+  cursor: pointer;
+}
+.bottom-ads-container p:hover {
+  /* color: rgba(211, 0, 253, 1); */
+  color: #ff9735;
+  transition: 0.3s ease-in-out;
 }
 
 @media (max-width: 600px) {

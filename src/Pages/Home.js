@@ -3,12 +3,17 @@ import ReactPaginate from "react-paginate";
 import PublicVideo from "../Components/PublicVideo";
 import "../Styles/home.css";
 import "../Styles/adsBox.css";
+import orgIcon from "../Assets/images/orgVideo.png";
+import externalIcon from "../Assets/images/externalVideo.png";
 
 function Home({ account, setFocus, freeVideos }) {
   // videos list
   const [currentVideos, setCurrentVideos] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
+
+  const [videoType, setVideoType] = useState("org");
+
   const videosPerPage = 20;
 
   useEffect(() => {
@@ -23,6 +28,15 @@ function Home({ account, setFocus, freeVideos }) {
     setVideoOffset(newOffset);
   };
 
+  const toggleExternal = () => {
+    alert("資源整合中...");
+    return;
+    // setVideoType("external");
+  };
+  const toggleOrg = () => {
+    setVideoType("org");
+  };
+
   // window.onbeforeunload = (e) => {
   //   var e = window.event || e;
   //   e.returnValue = "確定離開當前頁面?";
@@ -35,11 +49,25 @@ function Home({ account, setFocus, freeVideos }) {
         <h3>熱 - 舞 - 分 - 享 - 區</h3>
         <p>免費視頻</p>
         <>
-          <p className="home-tips">
-            友情提示:中國内地網友請自行解決魔法上網環境,以避免視頻無法觀看,注冊等問題.
-          </p>
+          <div className="toggle-type">
+            <img
+              onClick={toggleExternal}
+              className={
+                videoType === "external" ? "type-focus" : "type-video-img"
+              }
+              src={externalIcon}
+              alt=""
+            />
+            <img
+              onClick={toggleOrg}
+              className={videoType === "org" ? "type-focus" : "type-video-img"}
+              src={orgIcon}
+              alt=""
+            />
+          </div>
           <div className="homeVideos-box">
-            {currentVideos &&
+            {videoType === "org" ? (
+              currentVideos &&
               currentVideos.map((video, index) => (
                 <div className="item" key={index}>
                   <PublicVideo
@@ -51,7 +79,10 @@ function Home({ account, setFocus, freeVideos }) {
                     account={account}
                   />
                 </div>
-              ))}
+              ))
+            ) : (
+              <div>external</div>
+            )}
           </div>
         </>
       </div>

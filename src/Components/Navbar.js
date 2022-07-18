@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/navbar.css";
 import loginIcon from "../Assets/images/login.png";
 import outIcon from "../Assets/images/out.png";
@@ -23,6 +23,7 @@ function Navbar({ focus, account, isVip, isSuperVip }) {
     window.location.reload();
     navigate("/");
   };
+  useEffect(() => {}, [account, isVip, isSuperVip]);
   // const checkVipState = () => {
   //   if (account !== null) {
   //     if (isSuperVip) {

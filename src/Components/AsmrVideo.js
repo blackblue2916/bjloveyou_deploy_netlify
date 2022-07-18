@@ -2,7 +2,7 @@ import React from "react";
 import zien_01 from "../Assets/images/zien/zien_01.png";
 import "../Styles/asmrVideos.css";
 
-const AsmrVideo = ({ orgUrl, img, id, bj, info }) => {
+const AsmrVideo = ({ account, orgUrl, img, id, bj, info }) => {
   const jumpTo = (url) => {
     const w = window.open(
       "_blank",
@@ -17,7 +17,12 @@ const AsmrVideo = ({ orgUrl, img, id, bj, info }) => {
         <div
           className="preview-img"
           onClick={() => {
-            jumpTo(`/asmrVideoplayer/${id}`);
+            if (account === null) {
+              alert("請登錄賬號觀看!");
+              return;
+            } else {
+              jumpTo(`/asmrVideoplayer/${id}`);
+            }
           }}
         >
           <img src={img || zien_01} alt="" />

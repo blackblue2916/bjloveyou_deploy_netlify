@@ -3,11 +3,15 @@ import AsmrVideo from "../Components/AsmrVideo";
 import ReactPaginate from "react-paginate";
 import "../Styles/asmr.css";
 import "../Styles/adsBox.css";
+import asmrIcon from "../Assets/images/asmrIconVideo.png";
+import audioIcon from "../Assets/images/asmrIconAudio.png";
 
 function Asmr({ account, setFocus, asmrVideos }) {
   const [currentVideos, setCurrentVideos] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
+
+  const [videoType, setVideoType] = useState("video");
   const videosPerPage = 20;
 
   useEffect(() => {
@@ -22,6 +26,14 @@ function Asmr({ account, setFocus, asmrVideos }) {
     setVideoOffset(newOffset);
   };
 
+  const toggleAudio = () => {
+    alert("資源整合中...");
+    return;
+    // setVideoType("audio");
+  };
+  const toggleVideo = () => {
+    setVideoType("video");
+  };
   return (
     <>
       <div className="asmr">
@@ -29,8 +41,27 @@ function Asmr({ account, setFocus, asmrVideos }) {
         <h3>呢 - 喃 - 音 - 聲</h3>
         <p>會員視頻</p>
         <>
+          <div className="toggle-type">
+            <img
+              onClick={toggleAudio}
+              className={
+                videoType === "audio" ? "type-focus" : "type-video-img"
+              }
+              src={audioIcon}
+              alt=""
+            />
+            <img
+              onClick={toggleVideo}
+              className={
+                videoType === "video" ? "type-focus" : "type-video-img"
+              }
+              src={asmrIcon}
+              alt=""
+            />
+          </div>
           <div className="asmr-video-box">
-            {currentVideos &&
+            {videoType === "video" ? (
+              currentVideos &&
               currentVideos.map((video, index) => {
                 return (
                   <div className="item" key={index}>
@@ -44,7 +75,10 @@ function Asmr({ account, setFocus, asmrVideos }) {
                     />
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <div>audio</div>
+            )}
           </div>
         </>
       </div>
