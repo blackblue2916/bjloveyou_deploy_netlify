@@ -29,8 +29,8 @@ function AsmrVideoPlayer({ setNavbar, asmrVideos }) {
             marginwidth="0"
             marginheight="0"
             scrolling="no"
-            width="900"
-            height="506"
+            width="920"
+            height="518"
             allowfullscreen
             allowTransparency
           ></iframe>

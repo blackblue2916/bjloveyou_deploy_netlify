@@ -13,7 +13,7 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
   const [isCloseModal, setCloseModal] = useState(false);
-  const videosPerPage = 12;
+  const videosPerPage = 20;
 
   const urlParams = new URL(window.location.href);
   const pathname = urlParams.pathname;

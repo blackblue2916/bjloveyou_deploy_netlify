@@ -9,7 +9,7 @@ function Home({ account, setFocus, freeVideos }) {
   const [currentVideos, setCurrentVideos] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
-  const videosPerPage = 12;
+  const videosPerPage = 20;
 
   useEffect(() => {
     setFocus("/home");
@@ -35,6 +35,9 @@ function Home({ account, setFocus, freeVideos }) {
         <h3>熱 - 舞 - 分 - 享 - 區</h3>
         <p>免費視頻</p>
         <>
+          <p className="home-tips">
+            友情提示:中國内地網友請自行解決魔法上網環境,以避免視頻無法觀看,注冊等問題.
+          </p>
           <div className="homeVideos-box">
             {currentVideos &&
               currentVideos.map((video, index) => (

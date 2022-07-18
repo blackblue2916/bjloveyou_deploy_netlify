@@ -9,7 +9,7 @@ function Modal({ closeModal }) {
       <div className="modal-background" />
       <div className="modal-container">
         <div className="title">
-          <h2>提示訊息</h2>
+          <h2>主播愛你哦</h2>
         </div>
         <div className="infomation">
           <p>{"會員區需要贊助會員資格,如果有對你造成任何不便,深感抱歉!"}</p>

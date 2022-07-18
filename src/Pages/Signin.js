@@ -94,7 +94,7 @@ function Signin() {
           }}
           style={activeItem === "register" ? btnActiveStyle : null}
         >
-          Register
+          注冊/Register
         </button>
         <button
           onClick={() => {
@@ -102,7 +102,7 @@ function Signin() {
           }}
           style={activeItem === "signin" ? btnActiveStyle : null}
         >
-          Sign Up
+          登錄/SignUp
         </button>
       </div>
       <div className="input-container">

@@ -24,11 +24,7 @@ function Footer() {
             toUrl("https://www.youtube.com/channel/UCGuiz0Z-bz6B8xomTtBfLmw");
           }}
         />
-        <TelegramIcon
-          onClick={() => {
-            toUrl("https://t.me/lsp_hotdance");
-          }}
-        />
+        <TelegramIcon />
         <TwitterIcon />
         <InstagramIcon />
         <FacebookIcon />

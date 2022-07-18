@@ -8,7 +8,7 @@ function Asmr({ account, setFocus, asmrVideos }) {
   const [currentVideos, setCurrentVideos] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
-  const videosPerPage = 12;
+  const videosPerPage = 20;
 
   useEffect(() => {
     setFocus("/asmr");

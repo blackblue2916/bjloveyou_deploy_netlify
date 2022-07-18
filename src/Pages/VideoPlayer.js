@@ -26,14 +26,14 @@ function VideoPlayer({ setNavbar, freeVideos }) {
           <iframe
             className="public-video-iframe"
             src={currentVideoUrl}
-            title="BJHOUSE.XYZ"
+            title="WWW.BJLOVEYOU.COM"
             frameborder="0"
             marginwidth="0"
             marginheight="0"
             scrolling="no"
-            width="900"
-            height="506"
-            allowfullscreen
+            width="920"
+            height="518"
+            allowfullscreen="true"
             allowTransparency
           ></iframe>
         </div>
