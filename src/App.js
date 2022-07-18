@@ -236,8 +236,8 @@ function App() {
 
   return (
     <div className="app" onunload="goodbye()">
-      <AdsBox className={"ad-img-box-right"} />
-      <AdsBox className={"ad-img-box-left"} />
+      <AdsBox className="ad-img-box-right" type="right" />
+      <AdsBox className="ad-img-box-left" type="left" />
       <Router>
         <Logo />
         {showNavbar && (
