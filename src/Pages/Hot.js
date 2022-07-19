@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import "../Styles/hot.css";
-import "../Styles/adsBox.css";
+import "../Styles/paginate.css";
 
 import Modal from "../Components/Modal";
 import VipPreview from "../Components/VipPreview";
 import VipVideos from "../Components/VipVideos";
 
+const videosPerPage = 16;
 function Hot({ account, isVip, setFocus, vipVideos }) {
   // videos list
   const [currentVideos, setCurrentVideos] = useState(null);
+
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
   const [isCloseModal, setCloseModal] = useState(false);
-  const videosPerPage = 20;
 
   const urlParams = new URL(window.location.href);
   const pathname = urlParams.pathname;
@@ -80,12 +81,12 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
       </div>
       <div className="pagination-container">
         <ReactPaginate
-          breakLabel="..."
-          nextLabel=">>"
+          breakLabel="."
+          nextLabel=">"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={3}
+          // pageRangeDisplayed={2}
           pageCount={pageCount}
-          previousLabel="<<"
+          previousLabel="<"
           renderOnZeroPageCount={null}
           containerClassName="pagination"
           pageLinkClassName="page-num"

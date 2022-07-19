@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import PublicVideo from "../Components/PublicVideo";
 import "../Styles/home.css";
-import "../Styles/adsBox.css";
+import "../Styles/paginate.css";
 import orgIcon from "../Assets/images/orgVideo.png";
 import externalIcon from "../Assets/images/externalVideo.png";
 
+const pageSize = 16;
 function Home({ account, setFocus, freeVideos }) {
   // videos list
   const [currentVideos, setCurrentVideos] = useState(null);
@@ -14,17 +15,15 @@ function Home({ account, setFocus, freeVideos }) {
 
   const [videoType, setVideoType] = useState("org");
 
-  const videosPerPage = 20;
-
   useEffect(() => {
     setFocus("/home");
-    const endOffset = videoOffset + videosPerPage;
+    const endOffset = videoOffset + pageSize;
     setCurrentVideos(freeVideos.slice(videoOffset, endOffset));
-    setPageCount(Math.ceil(freeVideos.length / videosPerPage));
+    setPageCount(Math.ceil(freeVideos.length / pageSize));
   }, [account, freeVideos, setFocus, videoOffset]);
 
   const handlePageClick = (e) => {
-    const newOffset = (e.selected * videosPerPage) % freeVideos.length;
+    const newOffset = (e.selected * pageSize) % freeVideos.length;
     setVideoOffset(newOffset);
   };
 
@@ -88,12 +87,12 @@ function Home({ account, setFocus, freeVideos }) {
       </div>
       <div className="pagination-container">
         <ReactPaginate
-          breakLabel="..."
-          nextLabel=">>"
+          breakLabel="."
+          nextLabel=">"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={3}
+          pageRangeDisplayed={2}
           pageCount={pageCount}
-          previousLabel="<<"
+          previousLabel="<"
           renderOnZeroPageCount={null}
           containerClassName="pagination"
           pageLinkClassName="page-num"

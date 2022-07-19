@@ -20,7 +20,6 @@ import {
   // serverTimestamp,
 } from "firebase/firestore";
 import "../Styles/share.css";
-import "../Styles/adsBox.css";
 
 function Share({ account, isVip, superVip, setFocus }) {
   const shareLinksRef = collection(db, "share_links");

@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import AsmrVideo from "../Components/AsmrVideo";
 import ReactPaginate from "react-paginate";
 import "../Styles/asmr.css";
-import "../Styles/adsBox.css";
+import "../Styles/paginate.css";
 import asmrIcon from "../Assets/images/asmrIconVideo.png";
 import audioIcon from "../Assets/images/asmrIconAudio.png";
 
+const videosPerPage = 16;
 function Asmr({ account, setFocus, asmrVideos }) {
   const [currentVideos, setCurrentVideos] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
 
   const [videoType, setVideoType] = useState("video");
-  const videosPerPage = 20;
 
   useEffect(() => {
     setFocus("/asmr");
@@ -84,12 +84,12 @@ function Asmr({ account, setFocus, asmrVideos }) {
       </div>
       <div className="pagination-container">
         <ReactPaginate
-          breakLabel="..."
-          nextLabel=">>"
+          breakLabel="."
+          nextLabel=">"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={3}
+          pageRangeDisplayed={2}
           pageCount={pageCount}
-          previousLabel="<<"
+          previousLabel="<"
           renderOnZeroPageCount={null}
           containerClassName="pagination"
           pageLinkClassName="page-num"

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
 
 // 路由器
@@ -82,25 +83,37 @@ function App() {
   useEffect(() => {
     // 獲取當前用戶賬號訊息 - 并獲取和設置當前用戶 Email 即 ID 用於查詢 VIP 用戶資料
     // Git hub free videos link
-    fetch(
-      "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/publicvideos.json"
-    )
-      .then((res) => res.json())
-      .then((data) => setVideosList(data));
+    axios
+      .get(
+        "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/publicvideos.json"
+      )
+      .then((res) => {
+        setVideosList(res.data);
+      });
+    // .then((res) => res.json())
+    // .then((data) => setVideosList(data));
 
     // Git hub vip videos link
-    fetch(
-      "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/vipvideos.json"
-    )
-      .then((res) => res.json())
-      .then((data) => setVipVideos(data));
+    axios
+      .get(
+        "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/vipvideos.json"
+      )
+      .then((res) => {
+        setVipVideos(res.data);
+      });
+    // .then((res) => res.json())
+    // .then((data) => setVipVideos(data));
 
     // Git hub asmr videos link
-    fetch(
-      "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/asmrvideos.json"
-    )
-      .then((res) => res.json())
-      .then((data) => setAsmrVideos(data));
+    axios
+      .get(
+        "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/asmrvideos.json"
+      )
+      .then((res) => {
+        setAsmrVideos(res.data);
+      });
+    // .then((res) => res.json())
+    // .then((data) => setAsmrVideos(data));
 
     try {
       const storageAccountEmail = sessionStorage.getItem("accountEmail");

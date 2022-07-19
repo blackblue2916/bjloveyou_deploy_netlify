@@ -43,4 +43,7 @@
   .bottom-ads-container {
     top: 100%;
   }
+  .bottom-ads-container img {
+    top: 100%;
+  }
 }
