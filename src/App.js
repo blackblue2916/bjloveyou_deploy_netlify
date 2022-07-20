@@ -85,7 +85,7 @@ function App() {
     // Git hub free videos link
     axios
       .get(
-        "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/publicvideos.json"
+        "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/publicvideos.json"
       )
       .then((res) => {
         setVideosList(res.data);
@@ -96,7 +96,7 @@ function App() {
     // Git hub vip videos link
     axios
       .get(
-        "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/vipvideos.json"
+        "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/vipvideos.json"
       )
       .then((res) => {
         setVipVideos(res.data);
@@ -107,7 +107,7 @@ function App() {
     // Git hub asmr videos link
     axios
       .get(
-        "https://blackblue2916.github.io/bjhouse.github.io/bjhouse/db/asmrvideos.json"
+        "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/asmrvideos.json"
       )
       .then((res) => {
         setAsmrVideos(res.data);
