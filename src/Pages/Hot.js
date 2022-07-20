@@ -7,6 +7,9 @@ import Modal from "../Components/Modal";
 import VipPreview from "../Components/VipPreview";
 import VipVideos from "../Components/VipVideos";
 
+import vipIcon from "../Assets/images/vipIconVideo.png";
+import bestIcon from "../Assets/images/bestIconVideo.png";
+
 const videosPerPage = 16;
 function Hot({ account, isVip, setFocus, vipVideos }) {
   // videos list
@@ -15,6 +18,8 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
   const [pageCount, setPageCount] = useState(0);
   const [videoOffset, setVideoOffset] = useState(0);
   const [isCloseModal, setCloseModal] = useState(false);
+
+  const [videoType, setVideoType] = useState("vip");
 
   const urlParams = new URL(window.location.href);
   const pathname = urlParams.pathname;
@@ -33,6 +38,15 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
     setVideoOffset(newOffset);
   };
 
+  const toggleBest = () => {
+    alert("資源整合中...");
+    return;
+    // setVideoType("audio");
+  };
+  const toggleVip = () => {
+    setVideoType("vip");
+  };
+
   return (
     <>
       <div className="hot">
@@ -40,6 +54,20 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
         <h3>性 - 感 - 熱 - 舞 - 區</h3>
         <p>會員視頻</p>
         <>
+          <div className="toggle-type">
+            <img
+              onClick={toggleBest}
+              className={videoType === "best" ? "type-focus" : "type-video-img"}
+              src={bestIcon}
+              alt=""
+            />
+            <img
+              onClick={toggleVip}
+              className={videoType === "vip" ? "type-focus" : "type-video-img"}
+              src={vipIcon}
+              alt=""
+            />
+          </div>
           {isVip === true ? (
             <div className="hotVideo-box">
               {currentVideos &&

@@ -16,7 +16,7 @@
 }
 .preview-img img {
   width: 220px;
-  height: 150px;
+  height: auto;
   object-fit: cover;
   transition: 0.2s linear;
   cursor: pointer;
