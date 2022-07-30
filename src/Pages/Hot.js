@@ -5,20 +5,27 @@ import "../Styles/paginate.css";
 
 import Modal from "../Components/Modal";
 import VipPreview from "../Components/VipPreview";
+import IvPreview from "../Components/IvPreview";
 import VipVideos from "../Components/VipVideos";
+import IvVideos from "../Components/IvVideos";
 
 import vipIcon from "../Assets/images/vipIconVideo.png";
+import ivIcon from "../Assets/images/ivIconVideo.png";
 import bestIcon from "../Assets/images/bestIconVideo.png";
 
 const videosPerPage = 16;
-function Hot({ account, isVip, setFocus, vipVideos }) {
-  // videos list
-  const [currentVideos, setCurrentVideos] = useState(null);
+function Hot({ account, isVip, setFocus, vipVideos, ivVideos }) {
+  // vip videos list
+  const [vip_HotVideos, setvip_HotVideos] = useState(null);
+  const [pageCount_vip, setPageCount_vip] = useState(0);
+  const [videoOffset_vip, setVideoOffset_vip] = useState(0);
 
-  const [pageCount, setPageCount] = useState(0);
-  const [videoOffset, setVideoOffset] = useState(0);
+  // iv videos list
+  const [iv_HotVideos, setIv_HotVideos] = useState(null);
+  const [pageCount_iv, setPageCount_iv] = useState(0);
+  const [videoOffset_iv, setVideoOffset_iv] = useState(0);
+
   const [isCloseModal, setCloseModal] = useState(false);
-
   const [videoType, setVideoType] = useState("vip");
 
   const urlParams = new URL(window.location.href);
@@ -28,20 +35,43 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
 
   useEffect(() => {
     setFocus("/hot");
-    const endOffset = videoOffset + videosPerPage;
-    setCurrentVideos(vipVideos.slice(videoOffset, endOffset));
-    setPageCount(Math.ceil(vipVideos.length / videosPerPage));
-  }, [account, setFocus, videoOffset, vipVideos]);
 
-  const handlePageClick = (e) => {
+    // vip hot db video
+    const endOffset_vip = videoOffset_vip + videosPerPage;
+    setvip_HotVideos(vipVideos.slice(videoOffset_vip, endOffset_vip));
+    setPageCount_vip(Math.ceil(vipVideos.length / videosPerPage));
+
+    // iv hot db video
+    const endOffset_iv = videoOffset_iv + videosPerPage;
+    setIv_HotVideos(ivVideos.slice(videoOffset_iv, endOffset_iv));
+    setPageCount_iv(Math.ceil(ivVideos.length / videosPerPage));
+  }, [
+    account,
+    setFocus,
+    videoOffset_vip,
+    videoOffset_iv,
+    pageCount_vip,
+    pageCount_iv,
+    vipVideos,
+    ivVideos,
+  ]);
+
+  const handlePageClick_vip = (e) => {
     const newOffset = (e.selected * videosPerPage) % vipVideos.length;
-    setVideoOffset(newOffset);
+    setVideoOffset_vip(newOffset);
+  };
+
+  const handlePageClick_iv = (e) => {
+    const newOffset = (e.selected * videosPerPage) % ivVideos.length;
+    setVideoOffset_iv(newOffset);
   };
 
   const toggleBest = () => {
     alert("資源整合中...");
     return;
-    // setVideoType("audio");
+  };
+  const toggleIv = () => {
+    setVideoType("iv");
   };
   const toggleVip = () => {
     setVideoType("vip");
@@ -52,13 +82,19 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
       <div className="hot">
         <p>videos</p>
         <h3>性 - 感 - 熱 - 舞 - 區</h3>
-        <p>會員視頻</p>
+        <p>會員視頻-精选视频,每一部都直击你的G点</p>
         <>
           <div className="toggle-type">
             <img
               onClick={toggleBest}
               className={videoType === "best" ? "type-focus" : "type-video-img"}
               src={bestIcon}
+              alt=""
+            />
+            <img
+              onClick={toggleIv}
+              className={videoType === "iv" ? "type-focus" : "type-video-img"}
+              src={ivIcon}
               alt=""
             />
             <img
@@ -70,8 +106,9 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
           </div>
           {isVip === true ? (
             <div className="hotVideo-box">
-              {currentVideos &&
-                currentVideos.map((video, index) => {
+              {videoType === "vip" &&
+                vip_HotVideos &&
+                vip_HotVideos.map((video, index) => {
                   return (
                     <div className="item" key={index}>
                       <VipVideos
@@ -86,14 +123,46 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
                     </div>
                   );
                 })}
+              {videoType === "iv" &&
+                iv_HotVideos &&
+                iv_HotVideos.map((video, index) => {
+                  return (
+                    <div className="item" key={index}>
+                      <IvVideos
+                        orgUrl={pathname}
+                        isVip={isVip}
+                        key={video.__id__}
+                        id={video.__id__}
+                        bj={video.name}
+                        img={video.img}
+                        info={video.info}
+                      />
+                    </div>
+                  );
+                })}
             </div>
           ) : (
             <div className="hotVideo-box">
-              {currentVideos &&
-                currentVideos.map((video, index) => {
+              {videoType === "vip" &&
+                vip_HotVideos &&
+                vip_HotVideos.map((video, index) => {
                   return (
                     <div className="item" key={index}>
                       <VipPreview
+                        key={index}
+                        bj={video.name}
+                        img={video.img}
+                        info={video.info}
+                      />
+                    </div>
+                  );
+                })}
+              {videoType === "iv" &&
+                iv_HotVideos &&
+                iv_HotVideos.map((video, index) => {
+                  return (
+                    <div className="item" key={index}>
+                      <IvPreview
                         key={index}
                         bj={video.name}
                         img={video.img}
@@ -108,20 +177,38 @@ function Hot({ account, isVip, setFocus, vipVideos }) {
         {!isCloseModal && !isVip && <Modal closeModal={setCloseModal} />}
       </div>
       <div className="pagination-container">
-        <ReactPaginate
-          breakLabel="."
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          // pageRangeDisplayed={2}
-          pageCount={pageCount}
-          previousLabel="<"
-          renderOnZeroPageCount={null}
-          containerClassName="pagination"
-          pageLinkClassName="page-num"
-          previousLinkClassName="page-num"
-          nextLinkClassName="page-num"
-          activeLinkClassName="active-page"
-        />
+        {videoType === "vip" && (
+          <ReactPaginate
+            breakLabel="."
+            nextLabel=">"
+            onPageChange={handlePageClick_vip}
+            // pageRangeDisplayed={2}
+            pageCount={pageCount_vip}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            containerClassName="pagination"
+            pageLinkClassName="page-num"
+            previousLinkClassName="page-num"
+            nextLinkClassName="page-num"
+            activeLinkClassName="active-page"
+          />
+        )}
+        {videoType === "iv" && (
+          <ReactPaginate
+            breakLabel="."
+            nextLabel=">"
+            onPageChange={handlePageClick_iv}
+            // pageRangeDisplayed={2}
+            pageCount={pageCount_iv}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            containerClassName="pagination"
+            pageLinkClassName="page-num"
+            previousLinkClassName="page-num"
+            nextLinkClassName="page-num"
+            activeLinkClassName="active-page"
+          />
+        )}
       </div>
     </>
   );

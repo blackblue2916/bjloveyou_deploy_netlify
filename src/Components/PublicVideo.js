@@ -23,7 +23,7 @@ function PublicVideo({ img, id, bj, info }) {
           <img src={img} alt="" />
         </div>
       </div>
-      <p className="bj-info">@:{bj + "__" + info}</p>
+      <p className="bj-info">@:{bj + " : " + info}</p>
     </>
   );
 }

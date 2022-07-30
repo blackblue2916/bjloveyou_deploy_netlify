@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/videoPlayer.css";
 
-function VipVideoPlayer({ setNavbar, vipVideos }) {
+function VipVideoPlayer({ setNavbar, vipVideos, setSideAds }) {
   // 取得当前网址内容
   const { videoId } = useParams();
   const [currentVideoUrl, setVideoUrl] = useState("");
@@ -15,7 +15,8 @@ function VipVideoPlayer({ setNavbar, vipVideos }) {
       }
     });
     setNavbar(false);
-  }, [vipVideos, videoId, setNavbar]);
+    setSideAds(false);
+  }, [vipVideos, videoId, setNavbar, setSideAds]);
 
   const playPage = () => {
     if (videoId !== "") {
@@ -29,8 +30,8 @@ function VipVideoPlayer({ setNavbar, vipVideos }) {
             marginwidth="0"
             marginheight="0"
             scrolling="no"
-            width="920"
-            height="518"
+            width="1080"
+            height="608"
             allowfullscreen
             allowTransparency
           ></iframe>

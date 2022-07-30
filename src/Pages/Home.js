@@ -46,7 +46,7 @@ function Home({ account, setFocus, freeVideos }) {
       <div className="home">
         <p>free dance videos</p>
         <h3>熱 - 舞 - 分 - 享 - 區</h3>
-        <p>免費視頻</p>
+        <p>每周穩定更新50~100部視頻</p>
         <>
           <div className="toggle-type">
             <img

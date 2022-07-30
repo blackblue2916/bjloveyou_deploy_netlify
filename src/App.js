@@ -27,6 +27,7 @@ import PageNotFound from "./Pages/PageNotFound";
 // import WebChat from "./Chat/WebChat";
 import VideoPlayer from "./Pages/VideoPlayer";
 import VipVideoPlayer from "./Pages/VipVideoPlayer";
+import IvVideoPlayer from "./Pages/IvVideoPlayer";
 import AsmrVideoPlayer from "./Pages/AsmrVideoPlayer";
 
 import {
@@ -55,10 +56,12 @@ function App() {
   const [freeVideos, setVideosList] = useState([]);
   const [vipVideos, setVipVideos] = useState([]);
   const [asmrVideos, setAsmrVideos] = useState([]);
+  const [ivVideos, setIvVideos] = useState([]);
 
   const vipUsersRef = collection(db, "vip_users");
   const [focus, setFocus] = useState("/home");
   const [showNavbar, setNavbar] = useState(true);
+  const [showSideAds, setSideAds] = useState(true);
   // const navigate = useNavigate();
   const [account, setAccount] = useState(null);
   // const [vipUsers, setVipUsers] = useState([]);
@@ -83,15 +86,11 @@ function App() {
   useEffect(() => {
     // 獲取當前用戶賬號訊息 - 并獲取和設置當前用戶 Email 即 ID 用於查詢 VIP 用戶資料
     // Git hub free videos link
-    axios
-      .get(
-        "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/publicvideos.json"
-      )
-      .then((res) => {
-        setVideosList(res.data);
-      });
-    // .then((res) => res.json())
-    // .then((data) => setVideosList(data));
+    fetch(
+      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/publicvideos.json"
+    )
+      .then((res) => res.json())
+      .then((data) => setVideosList(data));
 
     // Git hub vip videos link
     axios
@@ -103,6 +102,13 @@ function App() {
       });
     // .then((res) => res.json())
     // .then((data) => setVipVideos(data));
+
+    // Git hub iv videos link
+    fetch(
+      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/ivvideos.json"
+    )
+      .then((res) => res.json())
+      .then((data) => setIvVideos(data));
 
     // Git hub asmr videos link
     axios
@@ -247,10 +253,12 @@ function App() {
     sessionStorage.clear();
   };
 
+  const path = window.location.pathname;
+
   return (
     <div className="app" onunload="goodbye()">
-      <AdsBox className="ad-img-box-right" type="right" />
-      <AdsBox className="ad-img-box-left" type="left" />
+      {showSideAds && <AdsBox className="ad-img-box-right" type="right" />}
+      {showSideAds && <AdsBox className="ad-img-box-left" type="left" />}
       <Router>
         <Logo />
         {showNavbar && (
@@ -281,6 +289,7 @@ function App() {
                 isVip={isVip}
                 setFocus={setFocus}
                 vipVideos={vipVideos}
+                ivVideos={ivVideos}
               />
             }
           />
@@ -298,19 +307,41 @@ function App() {
           <Route
             path="/videoplayer/:videoId"
             element={
-              <VideoPlayer setNavbar={setNavbar} freeVideos={freeVideos} />
+              <VideoPlayer
+                setNavbar={setNavbar}
+                setSideAds={setSideAds}
+                freeVideos={freeVideos}
+              />
             }
           />
           <Route
             path="/vipVideoplayer/:videoId"
             element={
-              <VipVideoPlayer setNavbar={setNavbar} vipVideos={vipVideos} />
+              <VipVideoPlayer
+                setNavbar={setNavbar}
+                setSideAds={setSideAds}
+                vipVideos={vipVideos}
+              />
+            }
+          />
+          <Route
+            path="/ivVideoplayer/:videoId"
+            element={
+              <IvVideoPlayer
+                setNavbar={setNavbar}
+                setSideAds={setSideAds}
+                ivVideos={ivVideos}
+              />
             }
           />
           <Route
             path="/asmrVideoplayer/:videoId"
             element={
-              <AsmrVideoPlayer setNavbar={setNavbar} asmrVideos={asmrVideos} />
+              <AsmrVideoPlayer
+                setNavbar={setNavbar}
+                setSideAds={setSideAds}
+                asmrVideos={asmrVideos}
+              />
             }
           />
           <Route

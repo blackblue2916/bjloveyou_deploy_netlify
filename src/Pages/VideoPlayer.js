@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/videoPlayer.css";
 
-function VideoPlayer({ setNavbar, freeVideos }) {
+function VideoPlayer({ setNavbar, freeVideos, setSideAds }) {
   // 取得当前网址内容
   const { videoId } = useParams();
   const [currentVideoUrl, setVideoUrl] = useState("");
@@ -16,7 +16,8 @@ function VideoPlayer({ setNavbar, freeVideos }) {
       }
     });
     setNavbar(false);
-  }, [freeVideos, videoId, setNavbar]);
+    setSideAds(false);
+  }, [freeVideos, videoId, setNavbar, setSideAds]);
 
   const playPage = () => {
     if (videoId !== "") {
@@ -31,30 +32,26 @@ function VideoPlayer({ setNavbar, freeVideos }) {
             marginwidth="0"
             marginheight="0"
             scrolling="no"
-            width="920"
-            height="518"
+            width="1080"
+            height="608"
             allowfullscreen="true"
             allowTransparency
           ></iframe>
         </div>
       );
     } else {
-      return <h3>Loading......</h3>;
+      return <h3>你為什麽打不開這個視頻呢......</h3>;
     }
   };
 
-  window.onbeforeunload = (e) => {
-    // var e = window.event || e;
-    // e.returnValue = "確定離開當前頁面?";
-    setNavbar(true);
-    setVideoUrl("");
-  };
+  // window.onbeforeunload = function (e) {
+  //   // var e = window.event || e;
+  //   // e.returnValue = "確定離開當前頁面?";
+  //   setNavbar(true);
+  //   setVideoUrl("");
+  // };
 
-  return (
-    <div className="video-container" onunload="goodbye()">
-      {playPage()}
-    </div>
-  );
+  return <div className="video-container">{playPage()}</div>;
 }
 
 export default VideoPlayer;

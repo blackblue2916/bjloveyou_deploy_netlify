@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/videoPlayer.css";
 
-function AsmrVideoPlayer({ setNavbar, asmrVideos }) {
+function AsmrVideoPlayer({ setNavbar, asmrVideos, setSideAds }) {
   // 取得当前网址内容
   const { videoId } = useParams();
   const [currentVideoUrl, setVideoUrl] = useState("");
@@ -15,7 +15,8 @@ function AsmrVideoPlayer({ setNavbar, asmrVideos }) {
       }
     });
     setNavbar(false);
-  }, [asmrVideos, videoId, setNavbar]);
+    setSideAds(false);
+  }, [asmrVideos, videoId, setNavbar, setSideAds]);
 
   const playPage = () => {
     if (videoId !== "") {
@@ -29,8 +30,8 @@ function AsmrVideoPlayer({ setNavbar, asmrVideos }) {
             marginwidth="0"
             marginheight="0"
             scrolling="no"
-            width="920"
-            height="518"
+            width="1080"
+            height="608"
             allowfullscreen
             allowTransparency
           ></iframe>
