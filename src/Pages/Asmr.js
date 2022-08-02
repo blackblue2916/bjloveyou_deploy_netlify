@@ -1,54 +1,61 @@
 import React, { useState, useEffect } from "react";
 import AsmrVideo from "../Components/AsmrVideo";
+import FuliAsmrVideo from "../Components/FuliAsmrVideo";
 import ReactPaginate from "react-paginate";
 // Audio player
-import AudioPlayer from "../Components/AudioPlayer";
 import "../Styles/asmr.css";
 import "../Styles/paginate.css";
 import asmrIcon from "../Assets/images/asmrIconVideo.png";
 import audioIcon from "../Assets/images/asmrIconAudio.png";
 import fuliIcon from "../Assets/images/asmrIconFuli.png";
-import artistsDb from "../Data/audio_artist.json";
 
 const videosPerPage = 16;
-function Asmr({ account, setFocus, asmrVideos }) {
-  const [currentVideos, setCurrentVideos] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  const [videoOffset, setVideoOffset] = useState(0);
+function Asmr({ account, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
+  // 高能錄製 asmr 視頻
+  const [currentAsmr_Videos, setAsmr_Videos] = useState(null);
+  const [pageCount_asmr, setPageCount_asmr] = useState(0);
+  const [videoOffset_asmr, setVideoOffset_asmr] = useState(0);
+
+  // 福利 asmr 視頻
+  const [currentFuliAsmr_videos, setFuliAsmr_videos] = useState(null);
+  const [pageCount_fuliAsmr, setPageCount_fuliAsmr] = useState(0);
+  const [videoOffset_fuliAsmr, setVideoOffset_fuliAsmr] = useState(0);
+
   const [videoType, setVideoType] = useState("video");
-
-  // audio
-
-  const [artists, setArtists] = useState(null);
-  const [artistIndex, setArtistIndex] = useState(0);
-  const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
-  const [nextAudioIndex, setNextAudioIndex] = useState(currentAudioIndex + 1);
-  const [songs, setSongs] = useState([
-    {
-      title: "jok 01",
-      src: "../Assets/music/1.aac",
-    },
-    {
-      title: "步非烟 02",
-      src: "../Assets/music/2.aac",
-    },
-    {
-      title: "哈尼 03",
-      src: "../Assets/music/3.aac",
-    },
-  ]);
 
   useEffect(() => {
     setFocus("/asmr");
-    setArtists(artistsDb);
-    const endOffset = videoOffset + videosPerPage;
-    setCurrentVideos(asmrVideos.slice(videoOffset, endOffset));
-    setPageCount(Math.ceil(asmrVideos.length / videosPerPage));
-  }, [account, setFocus, asmrVideos, videoOffset]);
 
-  const handlePageClick = (e) => {
-    const newOffset = (e.selected * videosPerPage) % asmrVideos.length;
-    setVideoOffset(newOffset);
+    // asmr db video
+    const endOffset_asmr = videoOffset_asmr + videosPerPage;
+    setAsmr_Videos(asmrVideos_db.slice(videoOffset_asmr, endOffset_asmr));
+    setPageCount_asmr(Math.ceil(asmrVideos_db.length / videosPerPage));
+
+    // fuli asmr db video
+    const endOffset_fuliAsmr = videoOffset_fuliAsmr + videosPerPage;
+    setFuliAsmr_videos(
+      fuliAsmrVideos_db.slice(videoOffset_fuliAsmr, endOffset_fuliAsmr)
+    );
+    setPageCount_fuliAsmr(Math.ceil(fuliAsmrVideos_db.length / videosPerPage));
+  }, [
+    account,
+    setFocus,
+    asmrVideos_db,
+    fuliAsmrVideos_db,
+    pageCount_asmr,
+    pageCount_fuliAsmr,
+    videoOffset_asmr,
+    videoOffset_fuliAsmr,
+  ]);
+
+  const handlePageClick_asmr = (e) => {
+    const newOffset = (e.selected * videosPerPage) % asmrVideos_db.length;
+    setVideoOffset_asmr(newOffset);
+  };
+
+  const handlePageClick_fuliAsmr = (e) => {
+    const newOffset = (e.selected * videosPerPage) % fuliAsmrVideos_db.length;
+    setVideoOffset_fuliAsmr(newOffset);
   };
 
   const toggleAudio = () => {
@@ -64,9 +71,7 @@ function Asmr({ account, setFocus, asmrVideos }) {
     setVideoType("video");
   };
   const toggleFuli = () => {
-    alert("資源整合中...");
-    return;
-    // setVideoType("fuli");
+    setVideoType("fuli");
   };
   return (
     <>
@@ -101,8 +106,8 @@ function Asmr({ account, setFocus, asmrVideos }) {
           </div>
           <div className="asmr-video-box">
             {videoType === "video" &&
-              currentVideos &&
-              currentVideos.map((video, index) => {
+              currentAsmr_Videos &&
+              currentAsmr_Videos.map((video, index) => {
                 return (
                   <div className="item" key={index}>
                     <AsmrVideo
@@ -116,17 +121,24 @@ function Asmr({ account, setFocus, asmrVideos }) {
                   </div>
                 );
               })}
+
+            {videoType === "fuli" &&
+              currentFuliAsmr_videos &&
+              currentFuliAsmr_videos.map((video, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <FuliAsmrVideo
+                      key={video.__id__}
+                      id={video.__id__}
+                      bj={video.name}
+                      img={video.img}
+                      info={video.info}
+                      account={account}
+                    />
+                  </div>
+                );
+              })}
           </div>
-          {videoType === "audio" && songs && (
-            <div className="audio-box">
-              <h3>{artists[artistIndex].name}</h3>
-              <AudioPlayer
-                song={songs[currentAudioIndex]}
-                nextsong={songs[nextAudioIndex]}
-              />
-              <p className="skip-btn">{artistIndex + 1}</p>
-            </div>
-          )}
         </>
       </div>
       <div className="pagination-container">
@@ -134,9 +146,25 @@ function Asmr({ account, setFocus, asmrVideos }) {
           <ReactPaginate
             breakLabel="."
             nextLabel=">"
-            onPageChange={handlePageClick}
+            onPageChange={handlePageClick_asmr}
             pageRangeDisplayed={2}
-            pageCount={pageCount}
+            pageCount={pageCount_asmr}
+            previousLabel="<"
+            renderOnZeroPageCount={null}
+            containerClassName="pagination"
+            pageLinkClassName="page-num"
+            previousLinkClassName="page-num"
+            nextLinkClassName="page-num"
+            activeLinkClassName="active-page"
+          />
+        )}
+        {videoType === "fuli" && (
+          <ReactPaginate
+            breakLabel="."
+            nextLabel=">"
+            onPageChange={handlePageClick_fuliAsmr}
+            pageRangeDisplayed={2}
+            pageCount={pageCount_fuliAsmr}
             previousLabel="<"
             renderOnZeroPageCount={null}
             containerClassName="pagination"

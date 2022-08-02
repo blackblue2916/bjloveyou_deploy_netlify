@@ -29,6 +29,7 @@ import VideoPlayer from "./Pages/VideoPlayer";
 import VipVideoPlayer from "./Pages/VipVideoPlayer";
 import IvVideoPlayer from "./Pages/IvVideoPlayer";
 import AsmrVideoPlayer from "./Pages/AsmrVideoPlayer";
+import FuliAsmrVideoPlayer from "./Pages/FuliAsmrVideoPlayer";
 
 import {
   // addDoc,
@@ -51,12 +52,15 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { db } from "./Helper/Chat_Auth_FirebaseConfig";
 import { auth } from "./Helper/Chat_Auth_FirebaseConfig";
+import FanVideoPlayer from "./Pages/FanVideoPlayer";
 
 function App() {
-  const [freeVideos, setVideosList] = useState([]);
+  const [freeVideos_db, setFreeVideosList] = useState([]);
+  const [fanVideos_db, setFanVideosList] = useState([]);
   const [vipVideos, setVipVideos] = useState([]);
-  const [asmrVideos, setAsmrVideos] = useState([]);
+  const [asmrVideos_db, setAsmrVideos] = useState([]);
   const [ivVideos, setIvVideos] = useState([]);
+  const [fuliAsmrVideos_db, setFuliAsmrVideos] = useState([]);
 
   const vipUsersRef = collection(db, "vip_users");
   const [focus, setFocus] = useState("/home");
@@ -84,15 +88,21 @@ function App() {
 
   let tempEmail = "";
   useEffect(() => {
-    // 獲取當前用戶賬號訊息 - 并獲取和設置當前用戶 Email 即 ID 用於查詢 VIP 用戶資料
-    // Git hub free videos link
+    // Git hub free videos link 免費舞蹈視頻
     fetch(
       "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/publicvideos.json"
     )
       .then((res) => res.json())
-      .then((data) => setVideosList(data));
+      .then((data) => setFreeVideosList(data));
 
-    // Git hub vip videos link
+    // Git hub fan videos link 網友提供視頻(有水印或雜項)
+    fetch(
+      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/fanvideos.json"
+    )
+      .then((res) => res.json())
+      .then((data) => setFanVideosList(data));
+
+    // Git hub vip videos link 會員舞蹈視頻
     axios
       .get(
         "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/vipvideos.json"
@@ -100,17 +110,15 @@ function App() {
       .then((res) => {
         setVipVideos(res.data);
       });
-    // .then((res) => res.json())
-    // .then((data) => setVipVideos(data));
 
-    // Git hub iv videos link
+    // Git hub iv videos link 寫真視頻
     fetch(
       "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/ivvideos.json"
     )
       .then((res) => res.json())
       .then((data) => setIvVideos(data));
 
-    // Git hub asmr videos link
+    // Git hub asmr videos links ASMR視頻
     axios
       .get(
         "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/asmrvideos.json"
@@ -118,8 +126,15 @@ function App() {
       .then((res) => {
         setAsmrVideos(res.data);
       });
-    // .then((res) => res.json())
-    // .then((data) => setAsmrVideos(data));
+
+    // Git audio videos links 音頻MP4視頻
+    fetch(
+      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/fuliasmrvideos.json"
+    )
+      .then((res) => res.json())
+      .then((data) => setFuliAsmrVideos(data));
+
+    // Git fuli videos links 福利ASMR定制視頻
 
     try {
       const storageAccountEmail = sessionStorage.getItem("accountEmail");
@@ -277,7 +292,8 @@ function App() {
               <Home
                 account={account}
                 setFocus={setFocus}
-                freeVideos={freeVideos}
+                freeVideos_db={freeVideos_db}
+                fanVideos_db={fanVideos_db}
               />
             }
           />
@@ -300,7 +316,8 @@ function App() {
                 account={account}
                 isVip={isVip}
                 setFocus={setFocus}
-                asmrVideos={asmrVideos}
+                asmrVideos_db={asmrVideos_db}
+                fuliAsmrVideos_db={fuliAsmrVideos_db}
               />
             }
           />
@@ -310,7 +327,17 @@ function App() {
               <VideoPlayer
                 setNavbar={setNavbar}
                 setSideAds={setSideAds}
-                freeVideos={freeVideos}
+                freeVideos_db={freeVideos_db}
+              />
+            }
+          />
+          <Route
+            path="/fanVideoplayer/:videoId"
+            element={
+              <FanVideoPlayer
+                setNavbar={setNavbar}
+                setSideAds={setSideAds}
+                fanVideos_db={fanVideos_db}
               />
             }
           />
@@ -340,7 +367,17 @@ function App() {
               <AsmrVideoPlayer
                 setNavbar={setNavbar}
                 setSideAds={setSideAds}
-                asmrVideos={asmrVideos}
+                asmrVideos_db={asmrVideos_db}
+              />
+            }
+          />
+          <Route
+            path="/fuliasmrVideoplayer/:videoId"
+            element={
+              <FuliAsmrVideoPlayer
+                setNavbar={setNavbar}
+                setSideAds={setSideAds}
+                fuliAsmrVideos_db={fuliAsmrVideos_db}
               />
             }
           />

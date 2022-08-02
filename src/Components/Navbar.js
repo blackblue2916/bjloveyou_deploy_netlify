@@ -40,11 +40,11 @@ function Navbar({ focus, account, isVip, isSuperVip }) {
         <Link className={focus === "/home" ? "focus" : "na"} to="/">
           免費區
         </Link>
-        <Link className={focus === "/hot" ? "focus" : "na"} to="/hot">
-          會員區
-        </Link>
         <Link className={focus === "/asmr" ? "focus" : "na"} to="/asmr">
           ASMR
+        </Link>
+        <Link className={focus === "/hot" ? "focus" : "na"} to="/hot">
+          會員區
         </Link>
         <Link className={focus === "/share" ? "focus" : "na"} to="/share">
           分享

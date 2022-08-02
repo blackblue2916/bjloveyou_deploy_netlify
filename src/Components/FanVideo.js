@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/public-video.css";
 
-function PublicVideo({ img, id, bj, info }) {
+function FanVideo({ img, id, bj, info }) {
   const jumpTo = (url) => {
     const w = window.open(
       "_blank",
@@ -16,7 +16,7 @@ function PublicVideo({ img, id, bj, info }) {
         <div
           className="preview-img"
           onClick={() => {
-            jumpTo(`/videoplayer/${id}`);
+            jumpTo(`/fanVideoplayer/${id}`);
           }}
         >
           <img src={img} alt="" />
@@ -27,4 +27,4 @@ function PublicVideo({ img, id, bj, info }) {
   );
 }
 
-export default PublicVideo;
+export default FanVideo;

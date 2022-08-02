@@ -29,7 +29,8 @@ import "../Styles/signin.css";
 
 function Signin() {
   const navigate = useNavigate();
-  const btnActiveStyle = { backgroundColor: "#3c91b6" };
+  const btnActiveStyle = { backgroundColor: "#3c91b6", color: "#fff" };
+  const btnNotActiveStyle = { backgroundColor: "#808080", color: "#000" };
   const [activeItem, setActiveItem] = useState("register");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -92,7 +93,7 @@ function Signin() {
           onClick={() => {
             setActiveItem("register");
           }}
-          style={activeItem === "register" ? btnActiveStyle : null}
+          style={activeItem === "register" ? btnActiveStyle : btnNotActiveStyle}
         >
           注冊/Register
         </button>
@@ -100,7 +101,7 @@ function Signin() {
           onClick={() => {
             setActiveItem("signin");
           }}
-          style={activeItem === "signin" ? btnActiveStyle : null}
+          style={activeItem === "signin" ? btnActiveStyle : btnNotActiveStyle}
         >
           登錄/SignUp
         </button>
@@ -121,8 +122,8 @@ function Signin() {
           placeholder="password..."
         ></input>
         <button onClick={activeItem === "register" ? register : login}>
-          {activeItem === "register" && "Register"}
-          {activeItem === "signin" && "Login"}
+          {activeItem === "register" && "提交注冊"}
+          {activeItem === "signin" && "登錄"}
         </button>
       </div>
       {
