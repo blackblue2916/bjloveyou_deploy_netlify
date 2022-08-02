@@ -3,21 +3,21 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/videoPlayer.css";
 
-function VideoPlayer({ setNavbar, freeVideos, setSideAds }) {
+function VideoPlayer({ setNavbar, freeVideos_db, setSideAds }) {
   // 取得当前网址内容
   const { videoId } = useParams();
   const [currentVideoUrl, setVideoUrl] = useState("");
 
   useEffect(() => {
     // eslint-disable-next-line array-callback-return
-    freeVideos.filter((video) => {
+    freeVideos_db.filter((video) => {
       if (videoId === video.__id__) {
         setVideoUrl(video.u + video.r + video.l);
       }
     });
     setNavbar(false);
     setSideAds(false);
-  }, [freeVideos, videoId, setNavbar, setSideAds]);
+  }, [freeVideos_db, videoId, setNavbar, setSideAds]);
 
   const playPage = () => {
     if (videoId !== "") {

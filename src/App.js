@@ -26,6 +26,7 @@ import Other from "./Pages/Other";
 import PageNotFound from "./Pages/PageNotFound";
 // import WebChat from "./Chat/WebChat";
 import VideoPlayer from "./Pages/VideoPlayer";
+import FanVideoPlayer from "./Pages/FanVideoPlayer";
 import VipVideoPlayer from "./Pages/VipVideoPlayer";
 import IvVideoPlayer from "./Pages/IvVideoPlayer";
 import AsmrVideoPlayer from "./Pages/AsmrVideoPlayer";
@@ -52,14 +53,13 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { db } from "./Helper/Chat_Auth_FirebaseConfig";
 import { auth } from "./Helper/Chat_Auth_FirebaseConfig";
-import FanVideoPlayer from "./Pages/FanVideoPlayer";
 
 function App() {
   const [freeVideos_db, setFreeVideosList] = useState([]);
   const [fanVideos_db, setFanVideosList] = useState([]);
-  const [vipVideos, setVipVideos] = useState([]);
+  const [vipVideos_db, setVipVideos] = useState([]);
   const [asmrVideos_db, setAsmrVideos] = useState([]);
-  const [ivVideos, setIvVideos] = useState([]);
+  const [ivVideos_db, setIvVideos] = useState([]);
   const [fuliAsmrVideos_db, setFuliAsmrVideos] = useState([]);
 
   const vipUsersRef = collection(db, "vip_users");
@@ -304,8 +304,8 @@ function App() {
                 account={account}
                 isVip={isVip}
                 setFocus={setFocus}
-                vipVideos={vipVideos}
-                ivVideos={ivVideos}
+                vipVideos={vipVideos_db}
+                ivVideos={ivVideos_db}
               />
             }
           />
@@ -347,7 +347,7 @@ function App() {
               <VipVideoPlayer
                 setNavbar={setNavbar}
                 setSideAds={setSideAds}
-                vipVideos={vipVideos}
+                vipVideos_db={vipVideos_db}
               />
             }
           />
@@ -357,7 +357,7 @@ function App() {
               <IvVideoPlayer
                 setNavbar={setNavbar}
                 setSideAds={setSideAds}
-                ivVideos={ivVideos}
+                ivVideos_db={ivVideos_db}
               />
             }
           />
