@@ -94,15 +94,20 @@ function Vip({ account, setFocus }) {
       </div>
       <div className="vip-help">
         <p>
-          @: 一次性贊助 [128rmb or 20usd 及以上可獲得永久贊助會員頭銜 ]
+          @: 一次性贊助 <span style={{ color: "red" }}>[ 128rmb ]</span> or
+          <span style={{ color: "red" }}> [ 20usd ]</span>
+          及以上可獲得永久贊助會員頭銜
           <br />
-          @: 贊助會員可以觀看所有板塊視頻, [ 游戲區 ] 開放時自動獲得權限 [
-          是的,我們還要開發在綫游戲 ] ,并且有權查看網盤分享鏈接.
+          @: 贊助會員可以觀看所有板塊視頻,{" "}
+          <span style={{ color: "yellow" }}>[ 游戲區 ]</span>
+          開放時自動獲得權限,并且有權查看網盤分享鏈接.
           <br />
           @: 一般注冊會員可以進入免費區觀看視頻.
           <br />
-          @: 爲提高匿名性,會員充值采用 [ 支付寶口令紅包 ],或者 [ PayPal ],或者 [
-          buymeacoffee ] 方式.
+          @: 爲提高匿名性,會員充值采用
+          <span style={{ color: "red" }}>[ 支付寶口令紅包 ]</span>,或者
+          <span style={{ color: "red" }}>[ 充值卡 ]</span>,或者
+          <span style={{ color: "red" }}>[ PayPal ]</span>,等方式.
           <br />
           @: 您必須登錄才能使用充值功能.
           <br />
@@ -132,11 +137,10 @@ function Vip({ account, setFocus }) {
       {account ? (
         <div className="buy-b">
           <h3>
-            {
-              "B: 使用支付寶口令紅包在綫充值(短時閒同一賬號重複提交超過5次將被永久封號)"
-            }
+            B: 使用充值卡在綫即時充值
+            <span style={{ color: "red" }}>( 暫未開放 )</span>
           </h3>
-          <p>請輸入本站您的Email登錄賬號:</p>
+          {/* <p>請輸入本站您的Email登錄賬號:</p>
           <input
             type="text"
             placeholder="賬號Email..."
@@ -174,7 +178,7 @@ function Vip({ account, setFocus }) {
             {
               "*注意!充值到賬最多8小時内完成,如果您的紅包口令未被受理,系統自動退回金額"
             }
-          </p>
+          </p> */}
         </div>
       ) : (
         <div className="buy-b2">
@@ -182,28 +186,8 @@ function Vip({ account, setFocus }) {
         </div>
       )}
       {account ? (
-        <div className="buy-c">
-          <h3>{"C: 使用 BuyMeACoffee 充值"}</h3>
-          <a
-            href="https://www.buymeacoffee.com/blackblue"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            https://www.buymeacoffee.com/blackblue
-          </a>
-          <p>
-            使用上面鏈接,支付 20USD 或以上
-            的贊助金額,并且一定要留下您在本網站注冊的賬號Email,完成后8小時内充值完成.
-          </p>
-        </div>
-      ) : (
-        <div className="buy-b2">
-          <h3>{"C: 使用 BuyMeACoffee 充值 - 需要登陸"}</h3>
-        </div>
-      )}
-      {account ? (
         <div className="buy-d">
-          <h3>{"D: 使用 PayPal 充值"}</h3>
+          <h3>{"C: 使用 PayPal 充值"}</h3>
           <a
             href="https://paypal.me/pixelmonkey2916?country.x=C2&locale.x=zh_XC"
             target="_blank"
@@ -218,7 +202,7 @@ function Vip({ account, setFocus }) {
         </div>
       ) : (
         <div className="buy-b2">
-          <h3>{"D: 使用 PayPal 充值 - 需要登陸"}</h3>
+          <h3>{"C: 使用 PayPal 充值 - 需要登陸"}</h3>
         </div>
       )}
     </div>

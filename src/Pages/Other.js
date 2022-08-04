@@ -5,12 +5,32 @@ function Other({ setFocus }) {
   useEffect(() => {
     setFocus("/other");
   }, [setFocus]);
+
+  const toUrl = (url) => {
+    const w = window.open(
+      "_blank",
+      "width=200, height=200, menubar=no, toolbar=no, status=no, scrollbars=yes"
+    );
+    w.location.href = url;
+    w.focus();
+  };
+
   return (
     <div className="other-container">
       <p>cooperation</p>
       <h3 className="other-title">合 - 作 - 推 - 廣 - 區</h3>
       <p>public share</p>
-      <div className="other-consult">
+      <div className="wedsite-info">
+        <p>Telegram Group</p>
+        <p
+          onClick={() => {
+            toUrl("https://www.youtube.com/channel/UCGuiz0Z-bz6B8xomTtBfLmw");
+          }}
+        >
+          Youtube Channel
+        </p>
+      </div>
+      {/* <div className="other-consult">
         <p className="other-text">
           廣告:
           如果您有意創建一個視頻流量網站[比如影視,動漫,熱播劇,寫真,成人等類型]可加入下方電報群咨詢;
@@ -25,7 +45,7 @@ function Other({ setFocus }) {
           服務:
           一條龍服務,包會.如果您懂一點點JS編程更佳,但不妨礙您建站,後期您的維護更新工作非常簡單,只需要將您獲取的資源,使用專用後臺上傳即可.
         </p>
-      </div>
+      </div> */}
       <h3>關於本站</h3>
       <div className="other-consult">
         <p className="other-text">

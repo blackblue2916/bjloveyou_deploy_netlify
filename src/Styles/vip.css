@@ -121,7 +121,7 @@ a {
 .buy-c {
   width: 60%;
   margin: 1rem auto;
-  background-color: #12100d69;
+  background: #1a1a1a;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -137,7 +137,7 @@ a {
 .buy-d {
   width: 60%;
   margin: 1rem auto;
-  background-color: #12100d69;
+  background: #1a1a1a;
   border-radius: 25px;
   display: flex;
   flex-direction: column;

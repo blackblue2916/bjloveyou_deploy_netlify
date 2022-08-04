@@ -31,19 +31,7 @@ function SourceLink({ account, isVip, title, link, code }) {
         >
           百度云鏈接
         </p>
-        <p>
-          {isVip
-            ? `提取碼: VIP可查看 [ ${code} ]`
-            : "提取碼: VIP可查看 [ xxxx ]"}
-        </p>
-        <button
-          className="show-button"
-          onClick={() => {
-            navigate("/vip");
-          }}
-        >
-          成爲VIP
-        </button>
+        <p>{isVip ? `提取碼: [ ${code} ]` : "提取碼: [ 贊助會員可查看 ]"}</p>
       </div>
     </div>
   );

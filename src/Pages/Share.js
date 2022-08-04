@@ -21,7 +21,7 @@ import {
 } from "firebase/firestore";
 import "../Styles/share.css";
 
-function Share({ account, isVip, superVip, setFocus }) {
+function Share({ account, isVip, setFocus }) {
   const shareLinksRef = collection(db, "share_links");
   const [links, setLinks] = useState([]);
 
@@ -52,6 +52,8 @@ function Share({ account, isVip, superVip, setFocus }) {
           <br />
           細則:
           分享鏈接免費,但只對贊助會員開放,分享内容不定期更新,并自動覆蓋之前的分享.
+          <br />
+          注意: 目前分享功能尚未開放,資源整合中...
         </p>
       </div>
       {account !== null ? (
