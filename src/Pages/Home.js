@@ -12,12 +12,12 @@ import zien_01 from "../Assets/images/zien/zien_01.png";
 const pageSize = 16;
 function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
   // free videos list
-  const [freeVideos, setFreeVideos] = useState(null);
+  const [freeVideos, setFreeVideos] = useState([]);
   const [pageCount_free, setPageCount_free] = useState(0);
   const [videoOffset_free, setVideoOffset_free] = useState(0);
 
   // fan videos list
-  const [fanVideos, setFanVideos] = useState(null);
+  const [fanVideos, setFanVideos] = useState([]);
   const [pageCount_fan, setPageCount_fan] = useState(0);
   const [videoOffset_fan, setVideoOffset_fan] = useState(0);
 
@@ -91,7 +91,7 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
           </div>
           <div className="homeVideos-box">
             {videoType === "org" &&
-              freeVideos &&
+              freeVideos.length > 0 &&
               freeVideos.map((video, index) => (
                 <div className="item" key={index}>
                   <PublicVideo
@@ -105,7 +105,7 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
                 </div>
               ))}
             {videoType === "fan" &&
-              fanVideos &&
+              fanVideos.length > 0 &&
               fanVideos.map((video, index) => (
                 <div className="item" key={index}>
                   <FanVideo
