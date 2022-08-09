@@ -12,12 +12,12 @@ import zien_01 from "../Assets/images/zien/zien_01.png";
 const pageSize = 16;
 function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
   // free videos list
-  const [freeVideos, setFreeVideos] = useState(null);
+  const [freeVideos, setFreeVideos] = useState([]);
   const [pageCount_free, setPageCount_free] = useState(0);
   const [videoOffset_free, setVideoOffset_free] = useState(0);
 
   // fan videos list
-  const [fanVideos, setFanVideos] = useState(null);
+  const [fanVideos, setFanVideos] = useState([]);
   const [pageCount_fan, setPageCount_fan] = useState(0);
   const [videoOffset_fan, setVideoOffset_fan] = useState(0);
 
@@ -26,18 +26,20 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
   useEffect(() => {
     setFocus("/home");
 
-    if (freeVideos_db) {
+    if (freeVideos_db.length > 0) {
       // free video db
       const endOffset_free = videoOffset_free + pageSize;
       setFreeVideos(freeVideos_db.slice(videoOffset_free, endOffset_free));
       setPageCount_free(Math.ceil(freeVideos_db.length / pageSize));
+      // console.log("free db is ok!");
     }
 
-    if (fanVideos_db) {
+    if (fanVideos_db.length > 0) {
       // fan video db
       const endOffset_fan = videoOffset_fan + pageSize;
       setFanVideos(fanVideos_db.slice(videoOffset_fan, endOffset_fan));
       setPageCount_fan(Math.ceil(fanVideos_db.length / pageSize));
+      // console.log("fan db is ok!");
     }
   }, [
     account,
@@ -96,32 +98,36 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
           <div className="homeVideos-box">
             {videoType === "org" &&
               freeVideos &&
-              freeVideos.map((video, index) => (
-                <div className="item" key={index}>
-                  <PublicVideo
-                    key={video.__id__}
-                    id={video.__id__}
-                    bj={video.name}
-                    img={video.img || zien_01}
-                    info={video.info}
-                    account={account}
-                  />
-                </div>
-              ))}
+              freeVideos.map((video, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <PublicVideo
+                      key={video.__id__}
+                      id={video.__id__}
+                      bj={video.name}
+                      img={video.img || zien_01}
+                      info={video.info}
+                      account={account}
+                    />
+                  </div>
+                );
+              })}
             {videoType === "fan" &&
               fanVideos &&
-              fanVideos.map((video, index) => (
-                <div className="item" key={index}>
-                  <FanVideo
-                    key={video.__id__}
-                    id={video.__id__}
-                    bj={video.name}
-                    img={video.img || zien_01}
-                    info={video.info}
-                    account={account}
-                  />
-                </div>
-              ))}
+              fanVideos.map((video, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <FanVideo
+                      key={video.__id__}
+                      id={video.__id__}
+                      bj={video.name}
+                      img={video.img || zien_01}
+                      info={video.info}
+                      account={account}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </>
       </div>

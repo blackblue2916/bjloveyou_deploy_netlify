@@ -61,9 +61,8 @@ function App() {
     // GET API 免費舞蹈視頻
     axios
       .get(
-        process.env.REACT_APP_FREE_VIDEOS_01
-        // ||
-        // process.env.REACT_APP_FREE_VIDEOS_02
+        process.env.REACT_APP_FREE_VIDEOS_01 ||
+          process.env.REACT_APP_FREE_VIDEOS_02
       )
       .then((res) => {
         setFreeVideosList(res.data);
@@ -78,9 +77,8 @@ function App() {
 
     axios
       .get(
-        process.env.REACT_APP_FAN_VIDEOS_01
-        // ||
-        // process.env.REACT_APP_FAN_VIDEOS_02
+        process.env.REACT_APP_FAN_VIDEOS_01 ||
+          process.env.REACT_APP_FAN_VIDEOS_02
       )
       .then((res) => {
         setFanVideosList(res.data);
