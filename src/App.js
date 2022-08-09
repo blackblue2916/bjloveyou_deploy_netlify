@@ -59,19 +59,30 @@ function App() {
 
   useEffect(() => {
     // GET API 免費舞蹈視頻
-    fetch(
-      process.env.REACT_APP_FREE_VIDEOS_01 ||
-        process.env.REACT_APP_FREE_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setFreeVideosList(data));
+    axios
+      .get(
+        process.env.REACT_APP_FREE_VIDEOS_01 ||
+          process.env.REACT_APP_FREE_VIDEOS_02
+      )
+      .then((res) => {
+        setFreeVideosList(res.data);
+      });
 
     // GET API 網友提供視頻(有水印或雜項)
-    fetch(
-      process.env.REACT_APP_FAN_VIDEOS_01 || process.env.REACT_APP_FAN_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setFanVideosList(data));
+    // fetch(
+    //   process.env.REACT_APP_FAN_VIDEOS_01 || process.env.REACT_APP_FAN_VIDEOS_02
+    // )
+    //   .then((res) => res.json())
+    //   .then((data) => setFanVideosList(data));
+
+    axios
+      .get(
+        process.env.REACT_APP_FAN_VIDEOS_01 ||
+          process.env.REACT_APP_FAN_VIDEOS_02
+      )
+      .then((res) => {
+        setFanVideosList(res.data);
+      });
 
     // GET API 會員舞蹈視頻
     axios
@@ -84,11 +95,13 @@ function App() {
       });
 
     // GET API 寫真視頻
-    fetch(
-      process.env.REACT_APP_IV_VIDEOS_01 || process.env.REACT_APP_IV_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setIvVideos(data));
+    axios
+      .get(
+        process.env.REACT_APP_IV_VIDEOS_01 || process.env.REACT_APP_IV_VIDEOS_02
+      )
+      .then((res) => {
+        setIvVideos(res.data);
+      });
 
     // GET API ASMR視頻
     axios
@@ -101,12 +114,14 @@ function App() {
       });
 
     // GET API 音頻MP4視頻
-    fetch(
-      process.env.REACT_APP_FULIASMR_VIDEOS_01 ||
-        process.env.REACT_APP_FULIASMR_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setFuliAsmrVideos(data));
+    axios
+      .get(
+        process.env.REACT_APP_FULIASMR_VIDEOS_01 ||
+          process.env.REACT_APP_FULIASMR_VIDEOS_02
+      )
+      .then((res) => {
+        setFuliAsmrVideos(res.data);
+      });
 
     // Git fuli videos links 福利ASMR定制視頻
 
