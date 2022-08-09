@@ -18,13 +18,11 @@ import BottomAds from "./Components/BottomAds";
 import Home from "./Pages/Home";
 import Signin from "./Pages/Signin";
 import Hot from "./Pages/Hot";
-// import Best from "./Pages/Best";
 import Asmr from "./Pages/Asmr";
 import Vip from "./Pages/Vip";
 import Share from "./Pages/Share";
 import Other from "./Pages/Other";
 import PageNotFound from "./Pages/PageNotFound";
-// import WebChat from "./Chat/WebChat";
 import VideoPlayer from "./Pages/VideoPlayer";
 import FanVideoPlayer from "./Pages/FanVideoPlayer";
 import VipVideoPlayer from "./Pages/VipVideoPlayer";
@@ -32,24 +30,7 @@ import IvVideoPlayer from "./Pages/IvVideoPlayer";
 import AsmrVideoPlayer from "./Pages/AsmrVideoPlayer";
 import FuliAsmrVideoPlayer from "./Pages/FuliAsmrVideoPlayer";
 
-import {
-  // addDoc,
-  // setDoc,
-  getDoc,
-  getDocs,
-  collection,
-  // orderBy,
-  // query,
-  // where,
-  // limit,
-  // startAfter,
-  // deleteDoc,/
-  doc,
-  // onSnapshot,
-  // getDocFromCache,
-  // updateDoc,
-  // serverTimestamp,
-} from "firebase/firestore";
+import { getDoc, getDocs, collection, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { db } from "./Helper/Chat_Auth_FirebaseConfig";
 import { auth } from "./Helper/Chat_Auth_FirebaseConfig";
@@ -66,70 +47,63 @@ function App() {
   const [focus, setFocus] = useState("/home");
   const [showNavbar, setNavbar] = useState(true);
   const [showSideAds, setSideAds] = useState(true);
-  // const navigate = useNavigate();
   const [account, setAccount] = useState(null);
-  // const [vipUsers, setVipUsers] = useState([]);
   const [currentUserId, setCurrentUserId] = useState("");
   const [currentUserEmail, setCurrentUserEmail] = useState("");
-  // const [currentUserGold, setCurrentUserGold] = useState(0);
   const [isVip, setVip] = useState(false);
   const [isSuperVip, setSuperVip] = useState(false);
-  // const [vipTime, setVipTime] = useState(null);
 
   const [isCloseAdsModal, setCloseAdsModal] = useState(false);
 
-  // if (vipUsers.length > 0) {
-  //   // console.log("01 message: ", vipUsers, typeof vipUsers);
-  //   // console.log("03 message: ", account.uid);
-  //   console.log("03 message: ", typeof account.email);
-  // } else {
-  //   console.log("01 沒有登錄!");
-  // }
-
   let tempEmail = "";
+
   useEffect(() => {
-    // Git hub free videos link 免費舞蹈視頻
+    // GET API 免費舞蹈視頻
     fetch(
-      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/publicvideos.json"
+      process.env.REACT_APP_FREE_VIDEOS_01 ||
+        process.env.REACT_APP_FREE_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setFreeVideosList(data));
 
-    // Git hub fan videos link 網友提供視頻(有水印或雜項)
+    // GET API 網友提供視頻(有水印或雜項)
     fetch(
-      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/fanvideos.json"
+      process.env.REACT_APP_FAN_VIDEOS_01 || process.env.REACT_APP_FAN_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setFanVideosList(data));
 
-    // Git hub vip videos link 會員舞蹈視頻
+    // GET API 會員舞蹈視頻
     axios
       .get(
-        "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/vipvideos.json"
+        process.env.REACT_APP_VIP_VIDEOS_01 ||
+          process.env.REACT_APP_VIP_VIDEOS_02
       )
       .then((res) => {
         setVipVideos(res.data);
       });
 
-    // Git hub iv videos link 寫真視頻
+    // GET API 寫真視頻
     fetch(
-      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/ivvideos.json"
+      process.env.REACT_APP_IV_VIDEOS_01 || process.env.REACT_APP_IV_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setIvVideos(data));
 
-    // Git hub asmr videos links ASMR視頻
+    // GET API ASMR視頻
     axios
       .get(
-        "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/asmrvideos.json"
+        process.env.REACT_APP_ASMR_VIDEOS_01 ||
+          process.env.REACT_APP_ASMR_VIDEOS_02
       )
       .then((res) => {
         setAsmrVideos(res.data);
       });
 
-    // Git audio videos links 音頻MP4視頻
+    // GET API 音頻MP4視頻
     fetch(
-      "https://blackblue2916.github.io/bjloveyou-data-db/bjhouse/db/fuliasmrvideos.json"
+      process.env.REACT_APP_FULIASMR_VIDEOS_01 ||
+        process.env.REACT_APP_FULIASMR_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setFuliAsmrVideos(data));
@@ -304,8 +278,8 @@ function App() {
                 account={account}
                 isVip={isVip}
                 setFocus={setFocus}
-                vipVideos={vipVideos_db}
-                ivVideos={ivVideos_db}
+                vipVideos_db={vipVideos_db}
+                ivVideos_db={ivVideos_db}
               />
             }
           />

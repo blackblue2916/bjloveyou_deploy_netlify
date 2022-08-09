@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/videoPlayer.css";
 
-function VipVideoPlayer({ setNavbar, vipVideos, setSideAds }) {
+function VipVideoPlayer({ setNavbar, vipVideos_db, setSideAds }) {
   // 取得当前网址内容
   const { videoId } = useParams();
   const [currentVideoUrl, setVideoUrl] = useState("");
 
   useEffect(() => {
     // eslint-disable-next-line array-callback-return
-    vipVideos.filter((video) => {
+    vipVideos_db.filter((video) => {
       if (videoId === video.__id__) {
         setVideoUrl(video.u + video.r + video.l);
       }
     });
     setNavbar(false);
     setSideAds(false);
-  }, [vipVideos, videoId, setNavbar, setSideAds]);
+  }, [vipVideos_db, videoId, setNavbar, setSideAds]);
 
   const playPage = () => {
     if (videoId !== "") {

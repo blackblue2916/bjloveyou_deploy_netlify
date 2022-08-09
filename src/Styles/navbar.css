@@ -99,25 +99,27 @@
   margin-left: -7px;
 }
 .login-icon {
-  width: 25px;
+  width: 70px;
   height: auto;
   margin-right: 2rem;
   margin-left: 2rem;
+  cursor: pointer;
 }
 .login-icon:hover {
-  width: 30px;
+  width: 80px;
   height: auto;
   transition: 0.3s ease-in-out;
 }
 
 .out-icon {
-  width: 25px;
+  width: 70px;
   height: auto;
   margin-right: 2rem;
   margin-left: 2rem;
+  cursor: pointer;
 }
 .out-icon:hover {
-  width: 30px;
+  width: 80px;
   height: auto;
   transition: 0.3s ease-in-out;
 }

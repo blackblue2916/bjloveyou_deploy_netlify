@@ -14,7 +14,7 @@ import ivIcon from "../Assets/images/ivIconVideo.png";
 import bestIcon from "../Assets/images/bestIconVideo.png";
 
 const videosPerPage = 16;
-function Hot({ account, isVip, setFocus, vipVideos, ivVideos }) {
+function Hot({ account, isVip, setFocus, vipVideos_db, ivVideos_db }) {
   // vip videos list
   const [vip_HotVideos, setvip_HotVideos] = useState(null);
   const [pageCount_vip, setPageCount_vip] = useState(0);
@@ -38,13 +38,13 @@ function Hot({ account, isVip, setFocus, vipVideos, ivVideos }) {
 
     // vip hot db video
     const endOffset_vip = videoOffset_vip + videosPerPage;
-    setvip_HotVideos(vipVideos.slice(videoOffset_vip, endOffset_vip));
-    setPageCount_vip(Math.ceil(vipVideos.length / videosPerPage));
+    setvip_HotVideos(vipVideos_db.slice(videoOffset_vip, endOffset_vip));
+    setPageCount_vip(Math.ceil(vipVideos_db.length / videosPerPage));
 
     // iv hot db video
     const endOffset_iv = videoOffset_iv + videosPerPage;
-    setIv_HotVideos(ivVideos.slice(videoOffset_iv, endOffset_iv));
-    setPageCount_iv(Math.ceil(ivVideos.length / videosPerPage));
+    setIv_HotVideos(ivVideos_db.slice(videoOffset_iv, endOffset_iv));
+    setPageCount_iv(Math.ceil(ivVideos_db.length / videosPerPage));
   }, [
     account,
     setFocus,
@@ -52,17 +52,17 @@ function Hot({ account, isVip, setFocus, vipVideos, ivVideos }) {
     videoOffset_iv,
     pageCount_vip,
     pageCount_iv,
-    vipVideos,
-    ivVideos,
+    vipVideos_db,
+    ivVideos_db,
   ]);
 
   const handlePageClick_vip = (e) => {
-    const newOffset = (e.selected * videosPerPage) % vipVideos.length;
+    const newOffset = (e.selected * videosPerPage) % vipVideos_db.length;
     setVideoOffset_vip(newOffset);
   };
 
   const handlePageClick_iv = (e) => {
-    const newOffset = (e.selected * videosPerPage) % ivVideos.length;
+    const newOffset = (e.selected * videosPerPage) % ivVideos_db.length;
     setVideoOffset_iv(newOffset);
   };
 

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/videoPlayer.css";
-function IvVideoPlayer({ setNavbar, ivVideos, setSideAds }) {
+function IvVideoPlayer({ setNavbar, ivVideos_db, setSideAds }) {
   // 取得当前网址内容
   const { videoId } = useParams();
   const [currentVideoUrl, setVideoUrl] = useState("");
 
   useEffect(() => {
     // eslint-disable-next-line array-callback-return
-    ivVideos.filter((video) => {
+    ivVideos_db.filter((video) => {
       if (videoId === video.__id__) {
         setVideoUrl(video.u + video.r + video.l);
       }
     });
     setNavbar(false);
     setSideAds(false);
-  }, [ivVideos, videoId, setNavbar, setSideAds]);
+  }, [ivVideos_db, videoId, setNavbar, setSideAds]);
 
   const playPage = () => {
     if (videoId !== "") {
