@@ -26,15 +26,19 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
   useEffect(() => {
     setFocus("/home");
 
-    // free video db
-    const endOffset_free = videoOffset_free + pageSize;
-    setFreeVideos(freeVideos_db.slice(videoOffset_free, endOffset_free));
-    setPageCount_free(Math.ceil(freeVideos_db.length / pageSize));
+    if (freeVideos_db) {
+      // free video db
+      const endOffset_free = videoOffset_free + pageSize;
+      setFreeVideos(freeVideos_db.slice(videoOffset_free, endOffset_free));
+      setPageCount_free(Math.ceil(freeVideos_db.length / pageSize));
+    }
 
-    // fan video db
-    const endOffset_fan = videoOffset_fan + pageSize;
-    setFanVideos(fanVideos_db.slice(videoOffset_fan, endOffset_fan));
-    setPageCount_fan(Math.ceil(fanVideos_db.length / pageSize));
+    if (fanVideos_db) {
+      // fan video db
+      const endOffset_fan = videoOffset_fan + pageSize;
+      setFanVideos(fanVideos_db.slice(videoOffset_fan, endOffset_fan));
+      setPageCount_fan(Math.ceil(fanVideos_db.length / pageSize));
+    }
   }, [
     account,
     freeVideos_db,
