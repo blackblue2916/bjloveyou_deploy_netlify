@@ -60,15 +60,18 @@ function App() {
   useEffect(() => {
     // GET API 免費舞蹈視頻
     fetch(
-      process.env.REACT_APP_FREE_VIDEOS_01 ||
-        process.env.REACT_APP_FREE_VIDEOS_02
+      // process.env.REACT_APP_FREE_VIDEOS_01
+      // ||
+      process.env.REACT_APP_FREE_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setFreeVideosList(data));
 
     // GET API 網友提供視頻(有水印或雜項)
     fetch(
-      process.env.REACT_APP_FAN_VIDEOS_01 || process.env.REACT_APP_FAN_VIDEOS_02
+      // process.env.REACT_APP_FAN_VIDEOS_01
+      // ||
+      process.env.REACT_APP_FAN_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setFanVideosList(data));
@@ -76,8 +79,9 @@ function App() {
     // GET API 會員舞蹈視頻
     axios
       .get(
-        process.env.REACT_APP_VIP_VIDEOS_01 ||
-          process.env.REACT_APP_VIP_VIDEOS_02
+        // process.env.REACT_APP_VIP_VIDEOS_01
+        // ||
+        process.env.REACT_APP_VIP_VIDEOS_02
       )
       .then((res) => {
         setVipVideos(res.data);
@@ -85,7 +89,9 @@ function App() {
 
     // GET API 寫真視頻
     fetch(
-      process.env.REACT_APP_IV_VIDEOS_01 || process.env.REACT_APP_IV_VIDEOS_02
+      // process.env.REACT_APP_IV_VIDEOS_01
+      // ||
+      process.env.REACT_APP_IV_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setIvVideos(data));
@@ -93,8 +99,9 @@ function App() {
     // GET API ASMR視頻
     axios
       .get(
-        process.env.REACT_APP_ASMR_VIDEOS_01 ||
-          process.env.REACT_APP_ASMR_VIDEOS_02
+        // process.env.REACT_APP_ASMR_VIDEOS_01
+        // ||
+        process.env.REACT_APP_ASMR_VIDEOS_02
       )
       .then((res) => {
         setAsmrVideos(res.data);
@@ -102,8 +109,9 @@ function App() {
 
     // GET API 音頻MP4視頻
     fetch(
-      process.env.REACT_APP_FULIASMR_VIDEOS_01 ||
-        process.env.REACT_APP_FULIASMR_VIDEOS_02
+      // process.env.REACT_APP_FULIASMR_VIDEOS_01
+      // ||
+      process.env.REACT_APP_FULIASMR_VIDEOS_02
     )
       .then((res) => res.json())
       .then((data) => setFuliAsmrVideos(data));
