@@ -94,7 +94,7 @@ function Vip({ account, setFocus }) {
       </div>
       <div className="vip-help">
         <p>
-          @: 一次性贊助 <span style={{ color: "red" }}>[ 168rmb ]</span> or
+          @: 一次性贊助 <span style={{ color: "red" }}>[ 138rmb ]</span> or
           <span style={{ color: "red" }}> [ 20usd ]</span>
           及以上可獲得永久贊助會員頭銜
           <br />

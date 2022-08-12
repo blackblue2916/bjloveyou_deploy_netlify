@@ -58,109 +58,115 @@ function App() {
   let tempEmail = "";
 
   useEffect(() => {
-    // GET API 免費舞蹈視頻
-    fetch(
-      // process.env.REACT_APP_FREE_VIDEOS_01 ||
-      process.env.REACT_APP_FREE_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setFreeVideosList(data));
+    let runEffect = true;
 
-    // GET API 網友提供視頻(有水印或雜項)
-    fetch(
-      // process.env.REACT_APP_FAN_VIDEOS_01 ||
-      process.env.REACT_APP_FAN_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setFanVideosList(data));
+    if (runEffect) {
+      // GET API 免費舞蹈視頻
+      axios
+        .get(process.env.REACT_APP_FREE_VIDEOS_02)
+        .then((res) => {
+          let array = res.data.sort((a, b) => {
+            if (a.timeAt < b.timeAt) return 1;
+            return -1;
+          });
+          setFreeVideosList(array);
+        })
+        .catch((error) => console.log("error: " + error));
 
-    // axios
-    //   .get(
-    //     process.env.REACT_APP_FAN_VIDEOS_01 ||
-    //       process.env.REACT_APP_FAN_VIDEOS_02
-    //   )
-    //   .then((res) => {
-    //     setFanVideosList(res.data);
-    //   });
+      // GET API 網友提供視頻(有水印或雜項)
+      axios
+        .get(process.env.REACT_APP_FAN_VIDEOS_02)
+        .then((res) => {
+          let array = res.data.sort((a, b) => {
+            if (a.timeAt < b.timeAt) return 1;
+            return -1;
+          });
+          setFanVideosList(array);
+        })
+        .catch((error) => console.log("error: " + error));
 
-    // GET API 會員舞蹈視頻
-    fetch(
-      // process.env.REACT_APP_VIP_VIDEOS_01
-      // ||
-      process.env.REACT_APP_VIP_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setVipVideos(data));
+      // GET API 會員舞蹈視頻
+      axios
+        .get(process.env.REACT_APP_VIP_VIDEOS_02)
+        .then((res) => {
+          let array = res.data.sort((a, b) => {
+            if (a.timeAt < b.timeAt) return 1;
+            return -1;
+          });
+          setVipVideos(array);
+        })
+        .catch((error) => console.log("error: " + error));
 
-    // GET API 寫真視頻
-    fetch(
-      // process.env.REACT_APP_IV_VIDEOS_01
-      // ||
-      process.env.REACT_APP_IV_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setIvVideos(data));
+      // GET API 寫真視頻
+      axios
+        .get(process.env.REACT_APP_IV_VIDEOS_02)
+        .then((res) => {
+          let array = res.data.sort((a, b) => {
+            if (a.timeAt < b.timeAt) return 1;
+            return -1;
+          });
+          setIvVideos(array);
+        })
+        .catch((error) => console.log("error: " + error));
 
-    // GET API ASMR視頻
-    fetch(
-      // process.env.REACT_APP_ASMR_VIDEOS_01
-      // ||
-      process.env.REACT_APP_ASMR_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setAsmrVideos(data));
+      // GET API ASMR視頻
+      axios
+        .get(process.env.REACT_APP_ASMR_VIDEOS_02)
+        .then((res) => {
+          let array = res.data.sort((a, b) => {
+            if (a.timeAt < b.timeAt) return 1;
+            return -1;
+          });
+          setAsmrVideos(array);
+        })
+        .catch((error) => console.log("error: " + error));
 
-    // GET API 音頻MP4視頻
-    fetch(
-      // process.env.REACT_APP_FULIASMR_VIDEOS_01
-      // ||
-      process.env.REACT_APP_FULIASMR_VIDEOS_02
-    )
-      .then((res) => res.json())
-      .then((data) => setFuliAsmrVideos(data));
+      // GET API 音頻MP4視頻
+      axios
+        .get(process.env.REACT_APP_FULIASMR_VIDEOS_02)
+        .then((res) => {
+          let array = res.data.sort((a, b) => {
+            if (a.timeAt < b.timeAt) return 1;
+            return -1;
+          });
+          setFuliAsmrVideos(array);
+        })
+        .catch((error) => console.log("error: " + error));
 
-    // Git fuli videos links 福利ASMR定制視頻
+      // Git fuli videos links 福利ASMR定制視頻
 
-    try {
-      const storageAccountEmail = sessionStorage.getItem("accountEmail");
-      const storageAccount = sessionStorage.getItem("account");
-      if (storageAccountEmail !== null) {
-        tempEmail = storageAccountEmail;
-        setCurrentUserEmail(storageAccountEmail);
-        if (storageAccount != null) {
-          setAccount(storageAccount);
-        }
-      } else {
-        onAuthStateChanged(auth, (currentAccount) => {
-          if (currentAccount != null) {
-            setAccount(currentAccount);
-            setCurrentUserEmail(currentAccount.email);
-            tempEmail = currentAccount.email;
-            sessionStorage.setItem("account", currentAccount);
-            sessionStorage.setItem("accountEmail", currentAccount.email);
+      try {
+        const storageAccountEmail = sessionStorage.getItem("accountEmail");
+        const storageAccount = sessionStorage.getItem("account");
+        if (storageAccountEmail !== null) {
+          tempEmail = storageAccountEmail;
+          setCurrentUserEmail(storageAccountEmail);
+          if (storageAccount !== null) {
+            setAccount(storageAccount);
           }
-        });
+        } else {
+          onAuthStateChanged(auth, (currentAccount) => {
+            if (currentAccount != null) {
+              setAccount(currentAccount);
+              setCurrentUserEmail(currentAccount.email);
+              tempEmail = currentAccount.email;
+              sessionStorage.setItem("account", currentAccount);
+              sessionStorage.setItem("accountEmail", currentAccount.email);
+            }
+          });
+        }
+      } catch (error) {
+        console.log(error.code);
       }
-    } catch (error) {
-      console.log(error.code);
+      updateAccount();
     }
-    updateAccount();
+
+    return () => {
+      runEffect = false;
+    };
   }, [account]);
 
   const updateAccount = () => {
-    // 方案01 vip 用戶快照
-    // try {
-    //   onSnapshot(vipUsersRef, (snapshot) => {
-    //     setVipUsers(
-    //       snapshot.docs.map((doc) => ({
-    //         ...doc.data(),
-    //         id: doc.id,
-    //       }))
-    //     );
-    //   });
-    // } catch (error) {
-    //   console.log(error.code);
-    // }
     // 方案02 獲取 vip 用戶訊息 id & gold
     try {
       const getUsers = async () => {
@@ -169,13 +175,6 @@ function App() {
         let vip = false;
         let superVip = false;
         let registerTime = null;
-
-        // setVipUsers(
-        //   data.docs.map((doc) => ({
-        //     ...doc.data(),
-        //     id: doc.id,
-        //   }))
-        // );
 
         // 臨時存儲一個用戶 ID 避免多次遍歷用戶列表
         const storageId = localStorage.getItem("userId");
@@ -188,7 +187,6 @@ function App() {
             superVip = doc.data().superVip;
             registerTime = doc.data().createdAt.seconds;
             setCurrentUserId(id);
-            // setVipTime(registerTime);
             localStorage.setItem("userId", doc.id);
             sessionStorage.setItem("createdAt", doc.data().createdAt.seconds);
             setVip(vip);
@@ -206,7 +204,6 @@ function App() {
                 superVip = doc.data().superVip;
                 registerTime = doc.data().createdAt.seconds;
                 setCurrentUserId(id);
-                // setVipTime(registerTime);
                 setVip(vip);
                 setSuperVip(superVip);
                 localStorage.setItem("userId", doc.id);
@@ -218,45 +215,18 @@ function App() {
             });
           }
         }
-        // console.log(sessionStorage.getItem("createdAt"));
       };
       getUsers();
-
-      // 01 提取單個比較
-      // data.docs.forEach((doc) => {
-      //   if (doc.data().user === tempEmail) {
-      //     id = doc.id;
-      //     gold = doc.data().gold;
-      //   }
-      // });
     } catch (error) {
       console.log(error.code);
       alert(error.code);
     }
   };
 
-  // if (vipUsers.length > 0 && account !== null) {
-  //   vipUsers.forEach((currentUser) => {
-  //     if (currentUser.user === account.email) {
-  //       vipGold = currentUser.gold;
-  //       userId = currentUser.id;
-  //       return;
-  //     }
-  //   });
-  // }
-
-  // const path = window.location.pathname;
-  window.onbeforeunload = (e) => {
-    // var e = window.event || e;
-    // e.returnValue = "確定離開當前頁面?";
-    localStorage.clear();
-    sessionStorage.clear();
-  };
-
   const path = window.location.pathname;
 
   return (
-    <div className="app" onunload="goodbye()">
+    <div className="app">
       {showSideAds && <AdsBox className="ad-img-box-right" type="right" />}
       {showSideAds && <AdsBox className="ad-img-box-left" type="left" />}
       <Router>
@@ -376,7 +346,6 @@ function App() {
               )
             }
           />
-          {/* <Route path="/games" element={<Games account={account} />} /> */}
           <Route
             path="/vip"
             element={<Vip account={account} setFocus={setFocus} />}
