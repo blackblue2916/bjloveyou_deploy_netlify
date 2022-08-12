@@ -78,8 +78,8 @@ function App() {
         .get(process.env.REACT_APP_FAN_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return 1;
-            return -1;
+            if (a.timeAt < b.timeAt) return -1;
+            return 1;
           });
           setFanVideosList(array);
         })
@@ -90,8 +90,8 @@ function App() {
         .get(process.env.REACT_APP_VIP_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return 1;
-            return -1;
+            if (a.timeAt < b.timeAt) return -1;
+            return 1;
           });
           setVipVideos(array);
         })
@@ -102,8 +102,8 @@ function App() {
         .get(process.env.REACT_APP_IV_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return 1;
-            return -1;
+            if (a.timeAt < b.timeAt) return -1;
+            return 1;
           });
           setIvVideos(array);
         })
@@ -114,8 +114,8 @@ function App() {
         .get(process.env.REACT_APP_ASMR_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return 1;
-            return -1;
+            if (a.timeAt < b.timeAt) return -1;
+            return 1;
           });
           setAsmrVideos(array);
         })
@@ -126,8 +126,8 @@ function App() {
         .get(process.env.REACT_APP_FULIASMR_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return 1;
-            return -1;
+            if (a.timeAt < b.timeAt) return -1;
+            return 1;
           });
           setFuliAsmrVideos(array);
         })
