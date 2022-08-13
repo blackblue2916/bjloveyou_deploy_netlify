@@ -27,14 +27,20 @@ function Share({ account, isVip, setFocus }) {
 
   useEffect(() => {
     setFocus("/share");
-    if (account !== null) {
-      const getShareLinks = async () => {
-        const data = await getDocs(shareLinksRef);
-        setLinks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      };
-      getShareLinks();
+    let runEffect = true;
+    if (runEffect) {
+      if (account !== null) {
+        const getShareLinks = async () => {
+          const data = await getDocs(shareLinksRef);
+          setLinks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        };
+        getShareLinks();
+      }
     }
-  }, [shareLinksRef, account, setFocus]);
+    return () => {
+      runEffect = false;
+    };
+  }, [account, setFocus]);
 
   return (
     <div className="share-container">

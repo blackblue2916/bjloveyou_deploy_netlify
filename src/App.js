@@ -35,6 +35,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { db } from "./Helper/Chat_Auth_FirebaseConfig";
 import { auth } from "./Helper/Chat_Auth_FirebaseConfig";
 
+const freeDB = require(process.env.REACT_APP_FREE_DB);
+const fanDB = require(process.env.REACT_APP_FAN_DB);
+const asmrDB = require(process.env.REACT_APP_ASMR_DB);
+const fuliDB = require(process.env.REACT_APP_FULI_DB);
+const vipDB = require(process.env.REACT_APP_VIP_DB);
+const ivDB = require(process.env.REACT_APP_IV_DB);
+
 function App() {
   // 賬號 context
   const [account, setAccount] = useState(null);
@@ -63,77 +70,116 @@ function App() {
     let runEffect = true;
 
     if (runEffect) {
+      // 由於使用公共 API GET 導致數據暴露, 采用本地服務器 GET 所有代碼不變,只修改頭部
+      let free_array = freeDB.sort((a, b) => {
+        if (a.timeAt < b.timeAt) return -1;
+        return 1;
+      });
+      setFreeVideosList(free_array);
+
+      let fan_array = fanDB.sort((a, b) => {
+        if (a.timeAt < b.timeAt) return -1;
+        return 1;
+      });
+      setFanVideosList(fan_array);
+
+      setFreeVideosList(free_array);
+
+      let vip_array = vipDB.sort((a, b) => {
+        if (a.timeAt < b.timeAt) return -1;
+        return 1;
+      });
+      setVipVideos(vip_array);
+
+      let iv_array = ivDB.sort((a, b) => {
+        if (a.timeAt < b.timeAt) return -1;
+        return 1;
+      });
+      setIvVideos(iv_array);
+
+      let asmr_array = asmrDB.sort((a, b) => {
+        if (a.timeAt < b.timeAt) return -1;
+        return 1;
+      });
+      setAsmrVideos(asmr_array);
+
+      let fuli_array = fuliDB.sort((a, b) => {
+        if (a.timeAt < b.timeAt) return -1;
+        return 1;
+      });
+      setFuliAsmrVideos(fuli_array);
+
       // GET API 免費舞蹈視頻
-      axios
-        .get(process.env.REACT_APP_FREE_VIDEOS_02)
-        .then((res) => {
-          let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return -1;
-            return 1;
-          });
-          setFreeVideosList(array);
-        })
-        .catch((error) => console.log("error: " + error));
+      // axios
+      //   .get(process.env.REACT_APP_FREE_VIDEOS_02)
+      //   .then((res) => {
+      //     let array = res.data.sort((a, b) => {
+      //       if (a.timeAt < b.timeAt) return -1;
+      //       return 1;
+      //     });
+      //     setFreeVideosList(array);
+      //   })
+      //   .catch((error) => console.log("error: " + error));
 
-      // GET API 網友提供視頻(有水印或雜項)
-      axios
-        .get(process.env.REACT_APP_FAN_VIDEOS_02)
-        .then((res) => {
-          let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return -1;
-            return 1;
-          });
-          setFanVideosList(array);
-        })
-        .catch((error) => console.log("error: " + error));
+      // // GET API 網友提供視頻(有水印或雜項)
+      // axios
+      //   .get(process.env.REACT_APP_FAN_VIDEOS_02)
+      //   .then((res) => {
+      //     let array = res.data.sort((a, b) => {
+      //       if (a.timeAt < b.timeAt) return -1;
+      //       return 1;
+      //     });
+      //     setFanVideosList(array);
+      //   })
+      //   .catch((error) => console.log("error: " + error));
 
-      // GET API 會員舞蹈視頻
-      axios
-        .get(process.env.REACT_APP_VIP_VIDEOS_02)
-        .then((res) => {
-          let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return -1;
-            return 1;
-          });
-          setVipVideos(array);
-        })
-        .catch((error) => console.log("error: " + error));
+      // // GET API 會員舞蹈視頻
+      // axios
+      //   .get(process.env.REACT_APP_VIP_VIDEOS_02)
+      //   .then((res) => {
+      //     let array = res.data.sort((a, b) => {
+      //       if (a.timeAt < b.timeAt) return -1;
+      //       return 1;
+      //     });
+      //     setVipVideos(array);
+      //   })
+      //   .catch((error) => console.log("error: " + error));
 
-      // GET API 寫真視頻
-      axios
-        .get(process.env.REACT_APP_IV_VIDEOS_02)
-        .then((res) => {
-          let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return -1;
-            return 1;
-          });
-          setIvVideos(array);
-        })
-        .catch((error) => console.log("error: " + error));
+      // // GET API 寫真視頻
+      // axios
+      //   .get(process.env.REACT_APP_IV_VIDEOS_02)
+      //   .then((res) => {
+      //     let array = res.data.sort((a, b) => {
+      //       if (a.timeAt < b.timeAt) return -1;
+      //       return 1;
+      //     });
+      //     setIvVideos(array);
+      //   })
+      //   .catch((error) => console.log("error: " + error));
 
-      // GET API ASMR視頻
-      axios
-        .get(process.env.REACT_APP_ASMR_VIDEOS_02)
-        .then((res) => {
-          let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return -1;
-            return 1;
-          });
-          setAsmrVideos(array);
-        })
-        .catch((error) => console.log("error: " + error));
+      // // GET API ASMR視頻
+      // axios
+      //   .get(process.env.REACT_APP_ASMR_VIDEOS_02)
+      //   .then((res) => {
+      //     let array = res.data.sort((a, b) => {
+      //       if (a.timeAt < b.timeAt) return -1;
+      //       return 1;
+      //     });
+      //     setAsmrVideos(array);
+      //   })
+      //   .catch((error) => console.log("error: " + error));
 
-      // GET API 音頻MP4視頻
-      axios
-        .get(process.env.REACT_APP_FULIASMR_VIDEOS_02)
-        .then((res) => {
-          let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return -1;
-            return 1;
-          });
-          setFuliAsmrVideos(array);
-        })
-        .catch((error) => console.log("error: " + error));
+      // // GET API 音頻MP4視頻
+      // axios
+      //   .get(process.env.REACT_APP_FULIASMR_VIDEOS_02)
+      //   .then((res) => {
+      //     let array = res.data.sort((a, b) => {
+      //       if (a.timeAt < b.timeAt) return -1;
+      //       return 1;
+      //     });
+      //     setFuliAsmrVideos(array);
+      //   })
+      //   .catch((error) => console.log("error: " + error));
 
       // Git fuli videos links 福利ASMR定制視頻
 
