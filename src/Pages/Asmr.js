@@ -10,7 +10,7 @@ import audioIcon from "../Assets/images/asmrIconAudio.png";
 import fuliIcon from "../Assets/images/asmrIconFuli.png";
 
 const videosPerPage = 16;
-function Asmr({ account, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
+function Asmr({ account, isVip, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
   // 高能錄製 asmr 視頻
   const [currentAsmr_Videos, setAsmr_Videos] = useState(null);
   const [pageCount_asmr, setPageCount_asmr] = useState(0);
@@ -134,6 +134,7 @@ function Asmr({ account, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
                       img={video.img}
                       info={video.info}
                       account={account}
+                      isVip={isVip}
                     />
                   </div>
                 );

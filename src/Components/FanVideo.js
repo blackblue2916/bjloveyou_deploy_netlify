@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/public-video.css";
 
-function FanVideo({ img, id, bj, info }) {
+function FanVideo({ account, img, id, bj, info }) {
   const jumpTo = (url) => {
     const w = window.open(
       "_blank",
@@ -16,7 +16,12 @@ function FanVideo({ img, id, bj, info }) {
         <div
           className="preview-img"
           onClick={() => {
-            jumpTo(`/fanVideoplayer/${id}`);
+            if (account === null) {
+              alert("請登錄賬號觀看!");
+              return;
+            } else {
+              jumpTo(`/fanVideoplayer/${id}`);
+            }
           }}
         >
           <img src={img} alt="" />

@@ -2,7 +2,7 @@ import React from "react";
 import zien_01 from "../Assets/images/zien/zien_01.png";
 import "../Styles/asmrVideos.css";
 
-function FuliAsmrVideo({ account, orgUrl, img, id, bj, info }) {
+function FuliAsmrVideo({ account, isVip, img, id, bj, info }) {
   const jumpTo = (url) => {
     const w = window.open(
       "_blank",
@@ -20,6 +20,8 @@ function FuliAsmrVideo({ account, orgUrl, img, id, bj, info }) {
             if (account === null) {
               alert("請登錄賬號觀看!");
               return;
+            } else if (!isVip) {
+              alert("加入贊助會員吧,獲得永久權限!");
             } else {
               jumpTo(`/fuliasmrVideoplayer/${id}`);
             }

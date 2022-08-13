@@ -36,6 +36,9 @@ import { db } from "./Helper/Chat_Auth_FirebaseConfig";
 import { auth } from "./Helper/Chat_Auth_FirebaseConfig";
 
 function App() {
+  // 賬號 context
+  const [account, setAccount] = useState(null);
+
   const [freeVideos_db, setFreeVideosList] = useState([]);
   const [fanVideos_db, setFanVideosList] = useState([]);
   const [vipVideos_db, setVipVideos] = useState([]);
@@ -47,7 +50,6 @@ function App() {
   const [focus, setFocus] = useState("/home");
   const [showNavbar, setNavbar] = useState(true);
   const [showSideAds, setSideAds] = useState(true);
-  const [account, setAccount] = useState(null);
   const [currentUserId, setCurrentUserId] = useState("");
   const [currentUserEmail, setCurrentUserEmail] = useState("");
   const [isVip, setVip] = useState(false);
@@ -90,8 +92,8 @@ function App() {
         .get(process.env.REACT_APP_VIP_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return 1;
-            return -1;
+            if (a.timeAt < b.timeAt) return -1;
+            return 1;
           });
           setVipVideos(array);
         })
@@ -164,7 +166,7 @@ function App() {
     return () => {
       runEffect = false;
     };
-  }, [account]);
+  }, [account, isVip]);
 
   const updateAccount = () => {
     // 方案02 獲取 vip 用戶訊息 id & gold
@@ -338,13 +340,7 @@ function App() {
           />
           <Route
             path="/signin"
-            element={
-              account ? (
-                <Navigate to="/" />
-              ) : (
-                <Signin updateAccount={updateAccount} />
-              )
-            }
+            element={account ? <Navigate to="/" /> : <Signin />}
           />
           <Route
             path="/vip"

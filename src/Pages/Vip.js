@@ -196,7 +196,8 @@ function Vip({ account, setFocus }) {
             https://paypal.me/pixelmonkey2916?country.x=C2&locale.x=zh_XC
           </a>
           <p>
-            使用上面鏈接,支付 20USD 或以上
+            使用上面鏈接,支付{" "}
+            <span style={{ color: "red" }}>[ 138rmb ] 或 [ 20usd ]</span> 以上
             贊助金額,并且一定要留下您在本網站注冊的賬號Email,完成后8小時内充值完成.
           </p>
         </div>
