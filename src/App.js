@@ -66,8 +66,8 @@ function App() {
         .get(process.env.REACT_APP_FREE_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return 1;
-            return -1;
+            if (a.timeAt < b.timeAt) return -1;
+            return 1;
           });
           setFreeVideosList(array);
         })
@@ -90,8 +90,8 @@ function App() {
         .get(process.env.REACT_APP_VIP_VIDEOS_02)
         .then((res) => {
           let array = res.data.sort((a, b) => {
-            if (a.timeAt < b.timeAt) return -1;
-            return 1;
+            if (a.timeAt < b.timeAt) return 1;
+            return -1;
           });
           setVipVideos(array);
         })
