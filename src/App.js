@@ -349,6 +349,7 @@ function App() {
                 setNavbar={setNavbar}
                 setSideAds={setSideAds}
                 vipVideos_db={vipVideos_db}
+                isVip={isVip}
               />
             }
           />
@@ -359,6 +360,7 @@ function App() {
                 setNavbar={setNavbar}
                 setSideAds={setSideAds}
                 ivVideos_db={ivVideos_db}
+                isVip={isVip}
               />
             }
           />
@@ -379,6 +381,7 @@ function App() {
                 setNavbar={setNavbar}
                 setSideAds={setSideAds}
                 fuliAsmrVideos_db={fuliAsmrVideos_db}
+                isVip={isVip}
               />
             }
           />

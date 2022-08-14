@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../Styles/videoPlayer.css";
-function IvVideoPlayer({ setNavbar, ivVideos_db, setSideAds }) {
+function IvVideoPlayer({ setNavbar, ivVideos_db, setSideAds, isVip }) {
   // 取得当前网址内容
   const { videoId } = useParams();
   const [currentVideoUrl, setVideoUrl] = useState("");
@@ -15,10 +15,10 @@ function IvVideoPlayer({ setNavbar, ivVideos_db, setSideAds }) {
     });
     setNavbar(false);
     setSideAds(false);
-  }, [ivVideos_db, videoId, setNavbar, setSideAds]);
+  }, [ivVideos_db, setNavbar, videoId, setSideAds, isVip]);
 
   const playPage = () => {
-    if (videoId !== "") {
+    if (videoId !== "" && isVip === true) {
       return (
         <div className="vip-video-title">
           <iframe
@@ -37,7 +37,7 @@ function IvVideoPlayer({ setNavbar, ivVideos_db, setSideAds }) {
         </div>
       );
     } else {
-      return <h3>Loading......</h3>;
+      return <h3>Loading......或許,您在其它地方打開了這個網址?</h3>;
     }
   };
 
