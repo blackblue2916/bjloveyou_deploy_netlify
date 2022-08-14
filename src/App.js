@@ -83,8 +83,6 @@ function App() {
       });
       setFanVideosList(fan_array);
 
-      setFreeVideosList(free_array);
-
       let vip_array = vipDB.sort((a, b) => {
         if (a.timeAt < b.timeAt) return -1;
         return 1;

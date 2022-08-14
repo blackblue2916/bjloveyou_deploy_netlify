@@ -21,7 +21,7 @@ function Asmr({ account, isVip, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
   const [pageCount_fuliAsmr, setPageCount_fuliAsmr] = useState(0);
   const [videoOffset_fuliAsmr, setVideoOffset_fuliAsmr] = useState(0);
 
-  const [videoType, setVideoType] = useState("video");
+  const [videoType, setVideoType] = useState("fuli");
 
   useEffect(() => {
     setFocus("/asmr");
@@ -67,8 +67,10 @@ function Asmr({ account, isVip, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
     // }
     // setVideoType("audio");
   };
-  const toggleVideo = () => {
-    setVideoType("video");
+  const toggleAsmr = () => {
+    alert("資源整合中...");
+    return;
+    // setVideoType("asmr");
   };
   const toggleFuli = () => {
     setVideoType("fuli");
@@ -96,16 +98,14 @@ function Asmr({ account, isVip, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
               alt=""
             />
             <img
-              onClick={toggleVideo}
-              className={
-                videoType === "video" ? "type-focus" : "type-video-img"
-              }
+              onClick={toggleAsmr}
+              className={videoType === "asmr" ? "type-focus" : "type-video-img"}
               src={asmrIcon}
               alt=""
             />
           </div>
           <div className="asmr-video-box">
-            {videoType === "video" &&
+            {videoType === "asmr" &&
               currentAsmr_Videos &&
               currentAsmr_Videos.map((video, index) => {
                 return (
@@ -143,7 +143,7 @@ function Asmr({ account, isVip, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
         </>
       </div>
       <div className="pagination-container">
-        {videoType === "video" && (
+        {videoType === "asmr" && (
           <ReactPaginate
             breakLabel="."
             nextLabel=">"
