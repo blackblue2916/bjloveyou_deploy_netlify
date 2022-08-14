@@ -79,7 +79,10 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
       <div className="home">
         <p>free dance videos</p>
         <h3>熱 - 舞 - 分 - 享 - 區</h3>
-        <p>每周穩定更新50~100部視頻</p>
+        <p>
+          <span style={{ color: "yellow" }}>免費區公告:</span>
+          歡迎!免費區目前運行正常.
+        </p>
         <>
           <div className="toggle-type">
             <img

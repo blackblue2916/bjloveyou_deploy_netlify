@@ -82,7 +82,10 @@ function Hot({ account, isVip, setFocus, vipVideos_db, ivVideos_db }) {
       <div className="hot">
         <p>videos</p>
         <h3>性 - 感 - 熱 - 舞 - 區</h3>
-        <p>會員視頻-精选视频,每一部都直击你的G点</p>
+        <p>
+          <span style={{ color: "yellow" }}>會員區公告:</span>
+          該區有小部分視頻正在更換服務器,可能出現無法播放的問題!
+        </p>
         <>
           <div className="toggle-type">
             <img
