@@ -243,7 +243,7 @@ function Vip({ account, setFocus }) {
         </div>
       ) : (
         <div className="buy-b2">
-          <h3>{"C: 使用 PayPal 充值 - 需要登陸"}</h3>
+          <h3>{"C: 使用 Buymeacoffee 充值 - 需要登陸"}</h3>
         </div>
       )}
     </div>

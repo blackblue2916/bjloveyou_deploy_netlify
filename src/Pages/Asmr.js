@@ -82,7 +82,8 @@ function Asmr({ account, isVip, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
         <h3>呢 - 喃 - 音 - 聲</h3>
         <p>
           <span style={{ color: "yellow" }}>公告:</span>
-          ASMR視頻&amp;音頻正在更換服務器,暫不開放
+          ASMR視頻&amp;音頻正在更換服務器,暫不開放,
+          福利視頻目前正常,每周穩定更新中...
         </p>
         <>
           <div className="toggle-type">

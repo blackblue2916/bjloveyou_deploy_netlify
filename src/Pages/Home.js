@@ -80,8 +80,9 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
         <p>free dance videos</p>
         <h3>熱 - 舞 - 分 - 享 - 區</h3>
         <p>
-          <span style={{ color: "yellow" }}>免費區公告:</span>
-          歡迎!免費區目前運行正常.
+          <span style={{ color: "yellow" }}>免費版公告:</span>
+          該板塊主要提供站長自錄自購的普通舞蹈影片,以及網友分享&amp;貢獻的影片[
+          可能含有廣告水印 ],每周穩定更新中...
         </p>
         <>
           <div className="toggle-type">
