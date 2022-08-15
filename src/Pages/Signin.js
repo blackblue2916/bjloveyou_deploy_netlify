@@ -103,7 +103,7 @@ function Signin() {
           }}
           style={activeItem === "signin" ? btnActiveStyle : btnNotActiveStyle}
         >
-          登錄/SignUp
+          登錄/LogIn
         </button>
       </div>
       <div className="input-container">
@@ -122,8 +122,8 @@ function Signin() {
           placeholder="password..."
         ></input>
         <button onClick={activeItem === "register" ? register : login}>
-          {activeItem === "register" && "提交注冊"}
-          {activeItem === "signin" && "登錄"}
+          {activeItem === "register" && "提交注冊/Register"}
+          {activeItem === "signin" && "登錄/LogIn"}
         </button>
       </div>
       {
