@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(0, 0, 0);
 }
+a {
+  text-decoration: dashed;
+}
 html {
   font-size: 90%;
 }
