@@ -32,8 +32,8 @@ function VideoPlayer({ setNavbar, freeVideos_db, setSideAds }) {
             marginwidth="0"
             marginheight="0"
             scrolling="no"
-            width="1080"
-            height="608"
+            width="920"
+            height="518"
             allowfullscreen="true"
             allowTransparency
           ></iframe>
