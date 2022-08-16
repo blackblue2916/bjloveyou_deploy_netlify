@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import "../Styles/hot.css";
 import "../Styles/paginate.css";
+import "../App.css";
 
 import Modal from "../Components/Modal";
 import VipPreview from "../Components/VipPreview";
@@ -82,7 +83,7 @@ function Hot({ account, isVip, setFocus, vipVideos_db, ivVideos_db }) {
       <div className="hot">
         <p>videos</p>
         <h3>性 - 感 - 熱 - 舞 - 區</h3>
-        <p>
+        <p className="announcement">
           <span style={{ color: "yellow" }}>會員區公告:</span>
           該區有小部分視頻正在更換服務器,可能出現無法播放的問題!
           該版塊視頻尺度較大,但不會出現性愛場景,年滿18嵗者放心觀看😀😀😀,每周穩定更新中...

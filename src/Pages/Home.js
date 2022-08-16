@@ -4,6 +4,7 @@ import PublicVideo from "../Components/PublicVideo";
 import FanVideo from "../Components/FanVideo";
 import "../Styles/home.css";
 import "../Styles/paginate.css";
+import "../App.css";
 import orgIcon from "../Assets/images/orgVideo.png";
 import externalIcon from "../Assets/images/externalVideo.png";
 
@@ -79,7 +80,7 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
       <div className="home">
         <p>free dance videos</p>
         <h3>熱 - 舞 - 分 - 享 - 區</h3>
-        <p>
+        <p className="announcement">
           <span style={{ color: "yellow" }}>免費版公告:</span>
           該板塊主要提供站長自錄自購的普通舞蹈影片,以及網友分享&amp;貢獻的影片[
           可能含有廣告水印 ],每周穩定更新中...
