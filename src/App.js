@@ -74,44 +74,51 @@ function App() {
     if (runEffect) {
       // 由於使用公共 API GET 導致數據暴露, 采用本地服務器 GET 所有代碼不變,只修改頭部
       let free_array = freeDB.sort((a, b) => {
-        if (a.timeAt < b.timeAt) return -1;
-        return 1;
+        if (a.__id__ > b.__id__) return 1;
+        if (a.__id__ < b.__id__) return -1;
+        return 0;
       });
       setFreeVideosList(free_array);
 
       let fan_array = fanDB.sort((a, b) => {
-        if (a.timeAt < b.timeAt) return -1;
-        return 1;
+        if (a.__id__ > b.__id__) return 1;
+        if (a.__id__ < b.__id__) return -1;
+        return 0;
       });
       setFanVideosList(fan_array);
 
       let vip_array = vipDB.sort((a, b) => {
-        if (a.timeAt < b.timeAt) return -1;
-        return 1;
+        if (a.__id__ > b.__id__) return 1;
+        if (a.__id__ < b.__id__) return -1;
+        return 0;
       });
       setVipVideos(vip_array);
 
       let iv_array = ivDB.sort((a, b) => {
-        if (a.timeAt < b.timeAt) return -1;
-        return 1;
+        if (a.__id__ > b.__id__) return 1;
+        if (a.__id__ < b.__id__) return -1;
+        return 0;
       });
       setIvVideos(iv_array);
 
       let asmr_array = asmrDB.sort((a, b) => {
-        if (a.timeAt < b.timeAt) return -1;
-        return 1;
+        if (a.__id__ > b.__id__) return 1;
+        if (a.__id__ < b.__id__) return -1;
+        return 0;
       });
       setAsmrVideos(asmr_array);
 
       let fuli_array = fuliDB.sort((a, b) => {
-        if (a.timeAt < b.timeAt) return -1;
-        return 1;
+        if (a.__id__ > b.__id__) return 1;
+        if (a.__id__ < b.__id__) return -1;
+        return 0;
       });
       setFuliAsmrVideos(fuli_array);
 
       let share_array = shareDB.sort((a, b) => {
-        if (a.timeAt < b.timeAt) return -1;
-        return 1;
+        if (a.__id__ > b.__id__) return 1;
+        if (a.__id__ < b.__id__) return -1;
+        return 0;
       });
       setShareLinks(share_array);
 

@@ -105,7 +105,7 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
               freeVideos &&
               freeVideos.map((video, index) => {
                 return (
-                  <div className="item" key={index}>
+                  <div className="item" key={video.__id__}>
                     <PublicVideo
                       key={video.__id__}
                       id={video.__id__}
@@ -121,7 +121,7 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
               fanVideos &&
               fanVideos.map((video, index) => {
                 return (
-                  <div className="item" key={index}>
+                  <div className="item" key={video.__id__}>
                     <FanVideo
                       key={video.__id__}
                       id={video.__id__}
