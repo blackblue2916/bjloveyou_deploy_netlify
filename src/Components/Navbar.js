@@ -46,9 +46,9 @@ function Navbar({ focus, account, isVip, isSuperVip }) {
         <Link className={focus === "/hot" ? "focus" : "na"} to="/hot">
           會員區
         </Link>
-        <Link className={focus === "/share" ? "focus" : "na"} to="/share">
+        {/* <Link className={focus === "/share" ? "focus" : "na"} to="/share">
           分享
-        </Link>
+        </Link> */}
         <Link className={focus === "/vip" ? "focus" : "na"} to="/vip">
           贊助
         </Link>

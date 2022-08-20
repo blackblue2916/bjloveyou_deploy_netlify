@@ -20,7 +20,7 @@ import Signin from "./Pages/Signin";
 import Hot from "./Pages/Hot";
 import Asmr from "./Pages/Asmr";
 import Vip from "./Pages/Vip";
-import Share from "./Pages/Share";
+// import Share from "./Pages/Share";
 import Other from "./Pages/Other";
 import PageNotFound from "./Pages/PageNotFound";
 import VideoPlayer from "./Pages/VideoPlayer";
@@ -41,6 +41,7 @@ const asmrDB = require(process.env.REACT_APP_ASMR_DB);
 const fuliDB = require(process.env.REACT_APP_FULI_DB);
 const vipDB = require(process.env.REACT_APP_VIP_DB);
 const ivDB = require(process.env.REACT_APP_IV_DB);
+const shareDB = require(process.env.REACT_APP_SHARE_DB);
 
 function App() {
   // 賬號 context
@@ -52,6 +53,7 @@ function App() {
   const [asmrVideos_db, setAsmrVideos] = useState([]);
   const [ivVideos_db, setIvVideos] = useState([]);
   const [fuliAsmrVideos_db, setFuliAsmrVideos] = useState([]);
+  const [shareLinks_db, setShareLinks] = useState([]);
 
   const vipUsersRef = collection(db, "vip_users");
   const [focus, setFocus] = useState("/home");
@@ -106,6 +108,12 @@ function App() {
         return 1;
       });
       setFuliAsmrVideos(fuli_array);
+
+      let share_array = shareDB.sort((a, b) => {
+        if (a.timeAt < b.timeAt) return -1;
+        return 1;
+      });
+      setShareLinks(share_array);
 
       // GET API 免費舞蹈視頻
       // axios
@@ -393,12 +401,17 @@ function App() {
             path="/vip"
             element={<Vip account={account} setFocus={setFocus} />}
           />
-          <Route
+          {/* <Route
             path="/share"
             element={
-              <Share account={account} isVip={isVip} setFocus={setFocus} />
+              <Share
+                account={account}
+                isVip={isVip}
+                setFocus={setFocus}
+                shareLinks_db={shareLinks_db}
+              />
             }
-          />
+          /> */}
           <Route path="/other" element={<Other setFocus={setFocus} />} />
           <Route path="*" element={<PageNotFound setFocus={setFocus} />} />
         </Routes>

@@ -21,26 +21,27 @@ import {
 } from "firebase/firestore";
 import "../Styles/share.css";
 
-function Share({ account, isVip, setFocus }) {
-  const shareLinksRef = collection(db, "share_links");
-  const [links, setLinks] = useState([]);
+function Share({ account, isVip, setFocus, shareLinks_db }) {
+  // const shareLinksRef = collection(db, "share_links");
+  const [links, setLinks] = useState(null);
 
   useEffect(() => {
     setFocus("/share");
     let runEffect = true;
     if (runEffect) {
-      if (account !== null) {
-        const getShareLinks = async () => {
-          const data = await getDocs(shareLinksRef);
-          setLinks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getShareLinks();
-      }
+      setLinks(shareLinks_db);
+      // if (account !== null) {
+      //   const getShareLinks = async () => {
+      //     const data = await getDocs(shareLinksRef);
+      //     setLinks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      //   };
+      //   getShareLinks();
+      // }
     }
     return () => {
       runEffect = false;
     };
-  }, [account, setFocus]);
+  }, [account, setFocus, shareLinks_db]);
 
   return (
     <div className="share-container">
@@ -62,24 +63,29 @@ function Share({ account, isVip, setFocus }) {
           注意: 目前分享功能尚未開放,資源整合中...
         </p>
       </div>
-      {account !== null ? (
-        <>
-          {links.map((link, index) => {
-            return (
-              <SourceLink
-                account={account}
-                isVip={isVip}
-                title={link.title}
-                link={link.link}
-                code={link.code}
-                key={index}
-              />
-            );
-          })}
-        </>
-      ) : (
-        <div className="share-tip">您必須登錄成爲VIP才可以瀏覽本站分享内容</div>
-      )}
+      <div className="share-title">
+        {isVip === true && links
+          ? links.map((item, index) => {
+              return (
+                <div className="links-item" key={index}>
+                  <SourceLink
+                    id={item.__id__}
+                    title={item.title}
+                    panlink={item.panlink}
+                    code={item.code}
+                  />
+                </div>
+              );
+            })
+          : links &&
+            links.map((item, index) => {
+              return (
+                <div className="links-item" key={index}>
+                  <SourceLink id={item.__id__} title={item.title} />
+                </div>
+              );
+            })}
+      </div>
     </div>
   );
 }

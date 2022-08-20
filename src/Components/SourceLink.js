@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/share.css";
+import icon from "../Assets/images/ads.jpg";
 
-function SourceLink({ account, isVip, title, link, code }) {
+function SourceLink({ id, title, panlink, code }) {
   const navigate = useNavigate();
   const jumpTo = (url) => {
     const w = window.open(
@@ -15,24 +16,25 @@ function SourceLink({ account, isVip, title, link, code }) {
 
   return (
     <div className="source-link">
-      <div className="preview-img-array">
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-      </div>
-      <p className="title">{title}</p>
-      <div className="link-box">
-        <p
-          onClick={() => {
-            jumpTo(link);
-          }}
-          className="link-click"
-        >
-          百度云鏈接
+      <p>資源編號: {id}</p>
+      <img src={icon} />
+      <h1>{title}</h1>
+      <div className="link-info">
+        <p>
+          {panlink ? (
+            <a href={panlink} target="blank">
+              百度網盤
+            </a>
+          ) : (
+            "贊助會員可查看"
+          )}
         </p>
-        <p>{isVip ? `提取碼: [ ${code} ]` : "提取碼: [ 贊助會員可查看 ]"}</p>
+        <p>提取碼: {code || "贊助會員可查看"}</p>
       </div>
+      <p>
+        <span style={{ color: "yellow" }}> 解壓密碼 : </span>
+        <span style={{ color: "red" }}> www.bjloveyou.com</span>
+      </p>
     </div>
   );
 }
