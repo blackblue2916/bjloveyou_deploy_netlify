@@ -86,6 +86,15 @@ function Asmr({ account, isVip, setFocus, asmrVideos_db, fuliAsmrVideos_db }) {
           ASMR視頻&amp;音頻正在更換服務器,暫不開放,
           福利視頻目前正常,每周穩定更新中...
         </p>
+        <p>
+          <span style={{ color: "rgba(255, 119, 0, 1)" }}>
+            @:
+            贊助會員將獲得進入原版1080P電報群的資格,視頻内容與網站同步以及更多
+            <br />
+            @: Sponsored members will get access to the original 1080P telegram
+            group, video content synced with the website and more
+          </span>
+        </p>
         <>
           <div className="toggle-type">
             <img

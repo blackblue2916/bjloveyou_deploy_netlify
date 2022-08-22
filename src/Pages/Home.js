@@ -85,6 +85,15 @@ function Home({ account, setFocus, freeVideos_db, fanVideos_db }) {
           該板塊主要提供站長自錄自購的普通舞蹈影片,以及網友分享&amp;貢獻的影片[
           可能含有廣告水印 ],每周穩定更新中...
         </p>
+        <p>
+          <span style={{ color: "rgba(255, 119, 0, 1)" }}>
+            @:
+            贊助會員將獲得進入原版1080P電報群的資格,視頻内容與網站同步以及更多
+            <br />
+            @: Sponsored members will get access to the original 1080P telegram
+            group, video content synced with the website and more
+          </span>
+        </p>
         <>
           <div className="toggle-type">
             <img

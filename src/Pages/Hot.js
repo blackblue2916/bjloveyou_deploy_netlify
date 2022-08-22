@@ -85,8 +85,16 @@ function Hot({ account, isVip, setFocus, vipVideos_db, ivVideos_db }) {
         <h3>性 - 感 - 熱 - 舞 - 區</h3>
         <p className="announcement">
           <span style={{ color: "yellow" }}>會員區公告:</span>
-          該區有小部分視頻正在更換服務器,可能出現無法播放的問題!
-          該版塊視頻尺度較大,但不會出現性愛場景,年滿18嵗者放心觀看😀😀😀,每周穩定更新中...
+          每周穩定更新中...
+        </p>
+        <p>
+          <span style={{ color: "rgba(255, 119, 0, 1)" }}>
+            @:
+            贊助會員將獲得進入原版1080P電報群的資格,視頻内容與網站同步以及更多
+            <br />
+            @: Sponsored members will get access to the original 1080P telegram
+            group, video content synced with the website and more
+          </span>
         </p>
         <>
           <div className="toggle-type">

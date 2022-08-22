@@ -20,16 +20,6 @@ function Other({ setFocus }) {
       <p>cooperation</p>
       <h3 className="other-title">合 - 作 - 推 - 廣 - 區</h3>
       <p>public share</p>
-      <div className="wedsite-info">
-        <p>Telegram Group</p>
-        <p
-          onClick={() => {
-            toUrl("https://www.youtube.com/channel/UCGuiz0Z-bz6B8xomTtBfLmw");
-          }}
-        >
-          Youtube Channel
-        </p>
-      </div>
       {/* <div className="other-consult">
         <p className="other-text">
           廣告:

@@ -99,11 +99,16 @@ function Vip({ account, setFocus }) {
           <span style={{ color: "red" }}> [ 20usd ]</span>
           及以上可獲得永久贊助會員頭銜
           <br />
-          @: 贊助會員可以觀看所有板塊視頻,{" "}
+          @: 贊助會員可以觀看所有板塊視頻,
           <span style={{ color: "yellow" }}>[ 游戲區 ]</span>
           開放時自動獲得權限,并且有權查看網盤分享鏈接.
           <br />
           @: 一般注冊會員可以進入免費區觀看視頻.
+          <br />
+          <span style={{ color: "rgba(255, 119, 0, 1)" }}>
+            @:
+            贊助會員將獲得進入原版1080P高清電報群的資格,視頻内容與網站同步以及更多
+          </span>
           <br />
           @: 爲提高匿名性,會員充值采用
           <span style={{ color: "red" }}>[ 支付寶口令紅包 ]</span>,或者
@@ -243,7 +248,7 @@ function Vip({ account, setFocus }) {
         </div>
       ) : (
         <div className="buy-b2">
-          <h3>{"C: 使用 Buymeacoffee 充值 - 需要登陸"}</h3>
+          <h3>{"D: 使用 Buymeacoffee 充值 - 需要登陸"}</h3>
         </div>
       )}
     </div>

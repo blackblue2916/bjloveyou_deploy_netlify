@@ -12,7 +12,11 @@ function Modal({ closeModal }) {
           <h2>主播愛你哦</h2>
         </div>
         <div className="infomation">
-          <p>{"會員區需要贊助會員資格,如果有對你造成任何不便,深感抱歉!"}</p>
+          <p>
+            {
+              "會員區需要贊助會員資格,如果有對你造成任何不便,深感抱歉!贊助會員將獲得進入原版1080P電報群的資格"
+            }
+          </p>
         </div>
         <div className="modal-foote">
           <button
