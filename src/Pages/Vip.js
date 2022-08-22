@@ -121,33 +121,28 @@ function Vip({ account, setFocus }) {
           再次提醒,想看[動作片]的朋友可以關掉頁面了,本站只提供性感美女熱舞視頻.
         </p>
       </div>
-      {account ? (
-        <div className="buy-a">
-          <h3>{"A: 使用Telegram聯係客服充值(9:00~24:00)"}</h3>
-          <br />
-          <p>
-            加入客服專用電報群,私信群主説明來意,在客服私信1V1聊天欄輸入您的網站注冊的賬號Email,以及支付寶紅包口令碼.
-          </p>
-          <a
-            href="https://t.me/bj_loveyou"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span style={{ color: "red" }}>[ 加入Telegram電報群客服 ]</span>
-          </a>
-        </div>
-      ) : (
-        <div className="buy-b2">
-          <h3>{"A: 加入Telegram電報群充值 - 需要登陸"}</h3>
-        </div>
-      )}
-      {account ? (
-        <div className="buy-b">
-          <h3>
-            B: 使用充值卡在綫即時充值
-            <span style={{ color: "red" }}>( 暫未開放 )</span>
-          </h3>
-          {/* <p>請輸入本站您的Email登錄賬號:</p>
+      <div className="buy-a">
+        <h3>{"A: 使用Telegram聯係客服群管理員充值(9:00~24:00)"}</h3>
+        <br />
+        <p>
+          加入接待專用電報群,私信群主説明來意,在客服私信1V1聊天欄輸入您的網站注冊的
+          <span style={{ color: "red" }}>[ 賬號Email ]</span>,以及
+          <span style={{ color: "red" }}>[ 支付寶紅包口令碼 ]</span>
+        </p>
+        <a
+          href="https://t.me/bj_loveyou"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style={{ color: "red" }}>[ 加入Telegram電報接待群 ]</span>
+        </a>
+      </div>
+      <div className="buy-b">
+        <h3>
+          B: 使用充值卡在綫即時充值
+          <span style={{ color: "red" }}>( 暫未開放 )</span>
+        </h3>
+        {/* <p>請輸入本站您的Email登錄賬號:</p>
           <input
             type="text"
             placeholder="賬號Email..."
@@ -186,71 +181,52 @@ function Vip({ account, setFocus }) {
               "*注意!充值到賬最多8小時内完成,如果您的紅包口令未被受理,系統自動退回金額"
             }
           </p> */}
-        </div>
-      ) : (
-        <div className="buy-b2">
-          <h3>{`B: 使用在綫充值功能 - 需要登陸! `}</h3>
-        </div>
-      )}
-      {account ? (
-        <div className="buy-d">
-          <h3>{"C: 使用 PayPal 充值 / Use PayPal Buy VIP"}</h3>
-          <br />
-          <a
-            href="https://paypal.me/pixelmonkey2916?country.x=C2&locale.x=zh_XC"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Go To : <span style={{ color: "red" }}>[ Paypal ]</span>
-          </a>
-          <p>
-            使用上面鏈接,
-            <span style={{ color: "aquamarine" }}>支付20美元 </span>{" "}
-            并留下您在本網站注冊的賬號Email,完成后客服將爲你開通資格.
-          </p>
-          <p>
-            Use the above link,Pay
-            <span style={{ color: "aquamarine" }}>[ 20usd ]</span>,Write down
-            your registered account (EMail) on this website in the message box
-            and wait for the qualification
-          </p>
-        </div>
-      ) : (
-        <div className="buy-b2">
-          <h3>{"C: 使用 PayPal 充值 - 需要登陸"}</h3>
-        </div>
-      )}
-      {account ? (
-        <div className="buy-d">
-          <h3>{"C: 使用 Buymeacoffee 充值 / Use Buymeacoffee Buy VIP"}</h3>
-          <br />
-          <a
-            href="https://www.buymeacoffee.com/blackblue"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Go To : <span style={{ color: "red" }}>[ Buymeacoffee ]</span>
-          </a>
-          <p>
-            使用上面鏈接,
-            <span style={{ color: "aquamarine" }}>購買4杯咖啡 </span>{" "}
-            并留下您在本網站注冊的賬號Email,完成后客服將爲你開通資格.
-          </p>
-          <p>
-            Use the above link,
-            <span style={{ color: "aquamarine" }}>
-              Buy 4 cups of coffee
-            </span>{" "}
-            Write down your registered account (EMail) on this website in the
-            message box and wait for the qualification
-          </p>
-          <img src={buyacoffee} alt="" />
-        </div>
-      ) : (
-        <div className="buy-b2">
-          <h3>{"D: 使用 Buymeacoffee 充值 - 需要登陸"}</h3>
-        </div>
-      )}
+      </div>
+      <div className="buy-d">
+        <h3>{"C: 使用 PayPal 充值 / Use PayPal Buy VIP"}</h3>
+        <br />
+        <a
+          href="https://paypal.me/pixelmonkey2916?country.x=C2&locale.x=zh_XC"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Go To : <span style={{ color: "red" }}>[ Paypal ]</span>
+        </a>
+        <p>
+          使用上面鏈接,
+          <span style={{ color: "aquamarine" }}>支付20美元 </span>{" "}
+          并留下您在本網站注冊的賬號Email,完成后客服將爲你開通資格.
+        </p>
+        <p>
+          Use the above link,Pay
+          <span style={{ color: "aquamarine" }}>[ 20usd ]</span>,Write down your
+          registered account (EMail) on this website in the message box and wait
+          for the qualification
+        </p>
+      </div>
+      <div className="buy-d">
+        <h3>{"C: 使用 Buymeacoffee 充值 / Use Buymeacoffee Buy VIP"}</h3>
+        <br />
+        <a
+          href="https://www.buymeacoffee.com/blackblue"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Go To : <span style={{ color: "red" }}>[ Buymeacoffee ]</span>
+        </a>
+        <p>
+          使用上面鏈接,
+          <span style={{ color: "aquamarine" }}>購買4杯咖啡 </span>{" "}
+          并留下您在本網站注冊的賬號Email,完成后客服將爲你開通資格.
+        </p>
+        <p>
+          Use the above link,
+          <span style={{ color: "aquamarine" }}>Buy 4 cups of coffee</span>{" "}
+          Write down your registered account (EMail) on this website in the
+          message box and wait for the qualification
+        </p>
+        <img src={buyacoffee} alt="" />
+      </div>
     </div>
   );
 }
